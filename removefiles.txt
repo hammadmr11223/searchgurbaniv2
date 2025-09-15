@@ -1,0 +1,41 @@
+list all files to be remove in future
+in resources folder in snp folder
+snpprakash.js
+snpprakashsearchview.js
+snpprakashsectn.js
+snpprakashview.js
+
+in resources folder in sgpsg folder
+sgpsgindex.js
+sgpsgview.js
+sgpsgprint.js
+
+
+
+
+fwtindex.js
+fwtview.js
+FWTPrint.js
+
+
+
+
+ssgdview.js
+sggdprint.js
+
+
+
+maansarovar.js
+MaansarovarIndex.js
+Maansarovarview.js
+
+
+resources me gurusahiban ka pora folder remove hoga
+
+resources me bhagatsahiban ka folder remove hoga
+
+resources me bhatts ka folder remove hoga
+
+resources me gurbaniraag ka folder remove hoga
+
+resources me sg ka folder remove hoga

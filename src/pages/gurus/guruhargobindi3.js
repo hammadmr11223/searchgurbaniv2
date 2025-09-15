@@ -1,0 +1,116 @@
+import React, { useEffect, useState } from 'react';
+// import { useNavigate, useOutletContext } from "react-router";
+// import { Link, useLocation } from "react-router-dom";
+// import '../../../assets/css/dashboard.css';
+// import '../../../assets/css/intro.css';
+// import '../../../assets/css/nanak.css';
+import Axios from 'axios';
+import { API } from "@/config/api";
+import { ApiHelper } from '@/helpers/ApiHelper';
+//import imgs from './assets/img/content/ggs_01.jpg'
+import introbannar from '@/assets/img/intro-bannar.webp';
+import Spinner from '@/components/Spinner';
+import { Helmet } from 'react-helmet';
+import gharg7 from '@/assets/img/content/gharg7.jpg'
+import gharg4 from '@/assets/img/content/gharg4.jpg';
+import gharg9 from '@/assets/img/content/gharg9.jpg';
+import HelmetWrapper from '@/components/CommonHelmet';
+import Image from 'next/image';
+import Link from 'next/link';
+
+function GuruHarGubind3() {
+    const [datas, setDatas] = useState([]);
+    const [error, setError] = useState(false)
+    const [loader, setLoader] = useState(false);
+
+
+     const [currentUrl, setCurrentUrl] = useState("");
+                                                
+                                                      useEffect(() => {
+                                                                             if (typeof window !== "undefined") {
+                                                                               setCurrentUrl(window.location.href);
+                                                                             }
+                                                                           }, []);
+
+
+    useEffect(() => {
+        getData()
+    }, [])
+    const getData = async () => {
+        setLoader(true)
+        await Axios.get('https://backend.searchgurbani.com/api/meta?url=gurus/guruhargobindi3')
+            .then((resData) => {
+                console.log('INTRO', resData.data.data);
+                setDatas(resData.data.data)
+setLoader(false)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    return (
+        <div>
+            <HelmetWrapper
+                title={`Guru Har Gobind Ji -3-: searchgurbani.com  `}
+                description={`Learn about life story of Guru Har Gobind ji -3- searchgurbani.com`}
+                keywords="Sikh, sikhism, guru, gobind singh,nanak, har gobind, tegh bahadur, arjan, angad, ramdas,ram das, har krishan,amar das"
+                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
+                url={currentUrl}
+            />
+            <section className='section-1'>
+                <div className=" justify-content-md-center align-items-center">
+                    <div className='banner-img'>
+                        <Image src={introbannar} class="img-fluid" alt="Responsive image" />
+                    </div>
+                </div>
+
+                <div className='Gurbani-Raags p-4'>
+                    <div className='container'>
+                        <h1 class="inner-heading "></h1>
+                        <div className="second-container intro-bkg">
+                    <div className="row ">
+                        <div class="col-lg-12">
+                        <div className='container align-items-center d-flex justify-content-center advance-search intro-border mt-5'>
+                            <div class="px-1 py-1 align-middle  bgv-intro">
+                                <div class="px-1 py-1 align-middle mt-0 akl-intro">
+                                 
+                                    
+                               
+                                {datas ?
+
+                                    < div className='dates'
+                                        dangerouslySetInnerHTML={{
+                                            __html: datas.html
+                                                ?.replace(/src="..\/assets\/img\/res\/gharg7\.jpg"/g, `src="${gharg7.src}"`)
+                                                .replace(/src="..\/assets\/img\/res\/gharg4\.jpg"/g, `src="${gharg4.src}"`)
+                                                .replace(/src="..\/assets\/img\/res\/gharg9\.jpg"/g, `src="${gharg9.src}"`)
+
+
+                                        }}
+                                    /> : null}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                        </div>
+                    </div>
+                    <hr></hr>
+                        <div className='row'>
+                        <div className='col-lg-4 page-content left-algn-next'><Link href='/gurus'>Index</Link></div>
+                        <div className='col-lg-4 page-content center-algn-next'><Link href='/gurus/guruhargobindi2'>Back</Link></div>
+                        <div className='col-lg-4  page-content right-algn-next'><Link href='/gurus/guruhargobindi4'>Next</Link></div>
+                        </div>
+                </div>
+        </div>
+
+                
+
+    { loader && <Spinner /> }
+            </section >
+
+        </div >
+    )
+}
+
+export default GuruHarGubind3

@@ -1,0 +1,49 @@
+//Gurbani search//
+import React, { useEffect, useState, useRef } from 'react';
+// import { Link, useLocation, useParams} from "react-router-dom";
+import { API } from '@/config/api';
+import { ApiHelper } from '@/helpers/ApiHelper';
+import Spinner from '@/components/Spinner';
+import ResourcePrintView from '@/components/ResourcePrint';
+import { useRouter } from 'next/router';
+
+function SGPSGPrint() {
+   // const { page_no, vol_no, lang} = useParams();
+
+    const router = useRouter();
+       const {  page_id, chapterId, lang } = router.query;
+      // page_no, vol_no
+      const page_no = page_id
+      const vol_no = chapterId
+console.log("ssssss",page_id, chapterId, lang);
+    const [headingData, setHeadindData] = useState([]);
+    const [angData, setAngData] = useState([]);
+    const [loader, setLoader] = useState(false);
+    const [lineNo, setLineNo] = useState("");
+    useEffect(() => {
+        getAngByAng(page_no)
+}, [page_no])
+const getAngByAng = async (pageNo) => {
+    setLoader(true)
+    console.log('AngNo',pageNo);
+    await ApiHelper.get(API.getResPage + "sri-gur-pratap-suraj-granth/page?page_no=" + page_no + "&&label=volume&volume_id=" + vol_no)
+        .then((resData) => {
+            setLoader(false);
+            console.log('Ang', resData.data);
+            setAngData(resData.data.lines)
+            setHeadindData(resData.data)
+        })
+        .catch((err) => {
+            setLoader(false);
+            console.log(err, 'err');
+        });
+}
+    return (
+        <div>
+            {loader && <Spinner />}
+            <ResourcePrintView  pageNo={page_no} title='Sri Gur Pratap Suraj Granth'  angData={angData} headingData={headingData} poet='sgpsg' lang={lang}/>  
+        </div>
+    )
+}
+
+export default SGPSGPrint
