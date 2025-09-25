@@ -14,9 +14,8 @@ import Table from 'react-bootstrap/Table';
 import VirtualKeyboard from '@/components/VirtualKeyboard';
 import charMap from '@/components/GurumukhiAscii';
 import searchbannar from '@/assets/img/search-bannar.webp';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/navigation';
+import Head from 'next/head';
 
 
 const transliterateToGurumukhi = (input) => {
@@ -35,15 +34,11 @@ function SGGKSearch(props) {
     const [englishInput, setEnglishInput] = useState('');
     const [input, setInput] = useState('');
     const [transliterated, setTransliterated] = useState('');
-      const [currentUrl, setCurrentUrl] = useState("");
+     
     const inputRef = useRef(null);
     const alphas = ['ੳ', 'ਅ', 'ੲ', 'ਸ', 'ਹ', 'ਕ', 'ਖ', 'ਗ', 'ਘ', 'ਙ', 'ਚ', 'ਛ', 'ਜ', 'ਝ', 'ਞ', 'ਟ', 'ਠ', 'ਡ', 'ਢ', 'ਣ', 'ਤ', 'ਥ', 'ਦ', 'ਧ', 'ਨ', 'ਪ', 'ਫ', 'ਬ', 'ਭ', 'ਮ', 'ਯ', 'ਰ', 'ਲ', 'ਵ', 'ੜ'];
 
-       useEffect(() => {
-            if (typeof window !== "undefined") {
-              setCurrentUrl(window.location.href);
-            }
-          }, []);
+    
     const handleKeyDown = (event) => {
         const char = event.key;
         if (charMap[char]) {
@@ -99,13 +94,7 @@ function SGGKSearch(props) {
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`Sri Guru Granth Kosh - Dr Gurcharan Singh -: ਗੁਰੂ ਗ੍ਰੰਥ ਕੋਸ਼ -: searchgurbani.com`}
-                description={`Sri Guru Granth Kosh by Dr Gurcharan Singh is a dictionary of Sikh Scriptures and books on Sikh Religion.`}
-                keywords="Sri Guru ,Granth ,Kosh"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           
             <Head>
                           <title>{`Sri Guru Granth Kosh - Dr Gurcharan Singh -: ਗੁਰੂ ਗ੍ਰੰਥ ਕੋਸ਼ -: searchgurbani.com`} </title>
                           <meta name="description" content={`Sri Guru Granth Kosh by Dr Gurcharan Singh is a dictionary of Sikh Scriptures and books on Sikh Religion.`} />

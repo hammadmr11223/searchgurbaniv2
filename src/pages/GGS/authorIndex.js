@@ -8,6 +8,7 @@ import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import Spinner from '@/components/Spinner';
 import Link from 'next/link';
+import Head from 'next/head';
 //import imgs from './assets/img/content/ggs_01.jpg'
 
 function AuthorIndex() {

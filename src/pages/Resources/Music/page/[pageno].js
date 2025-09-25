@@ -76,11 +76,11 @@ function IndianClassical() {
         <div>
             {loader && <Spinner />}
            <Head>
-                          <title>{headingData.title} </title>
-                          <meta name="description" content={headingData.description} />
-                          <meta name="keywords" content={headingData.keywords} />
-                          <meta property="og:title" content={headingData.title} />
-                          <meta property="og:description" content={headingData.description} />
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
                           <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
                          
                          

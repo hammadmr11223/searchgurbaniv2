@@ -25,6 +25,7 @@ import whatsapp from '../assets/img/whatsapp.svg';
 import mail from '../assets/img/mail.svg';
 import FontChange from './FontChange';
 import initialFormState from './defalutPref';
+import Head from 'next/head';
 
 const SharePage = (props) => {
     // const location = useLocation();

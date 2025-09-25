@@ -28,11 +28,10 @@ import initialFormState from '@/components/defalutPref';
 import MouseOverDic from '@/components/MouseOverDic';
 import { formatTextForCopy } from '@/components/textFormatter';
 import { MultiSelect } from "react-multi-select-component";
-import { Helmet } from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useParams } from 'next/navigation';
+import Head from 'next/head';
 
 function AkShabadLine() {
     // const location = useLocation();
