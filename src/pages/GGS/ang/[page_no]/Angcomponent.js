@@ -29,12 +29,11 @@ import MouseOverDic from '@/components/MouseOverDic';
 import { formatTextForCopy } from '@/components/textFormatter';
 import ShareLink from '@/components/ShareLink';
 import { MultiSelect } from "react-multi-select-component";
-import { Helmet } from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import { usePage } from '@/components/PageContext';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const AngByAng = (props) => {
     // const location = useLocation();
@@ -117,6 +116,7 @@ const AngByAng = (props) => {
     const textContainerRef = useRef(null);
     const [selected, setSelected] = useState([]);
     const [selectedTrans, setSelectedTrans] = useState([]);
+    const [headingData, setHeadindData] = useState([]);
     const [step, setStep] = useState(1);
     const options = [
         { label: "Phonetic", value: "Phonetic" },
@@ -256,6 +256,7 @@ const AngByAng = (props) => {
                 setLoader(false);
                 console.log('Ang', resData.data.lines);
                 setAngData(resData.data.lines)
+                setHeadindData(resData.data)
                 setAllData(resData.data)
                 setCurrentPage(resData.data.current_page);
                 window.scrollTo(0, 0);
@@ -846,13 +847,16 @@ const AngByAng = (props) => {
     };
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Sri Guru Granth Sahib Ji -: Ang : ${angNo} -: ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ -: searchgurbani.com`}
-                description={`Explore,Share and Listen to Audio of Ang  -${angNo} - of Sri Guru Granth Sahib ji at searchgurbani.com .`}
-                keywords="Gurmat Sangeet, Gurubani ,Kirtan,Amrit,Gurbani, Shabad, Keertan, English ,translation ,Phonetic, Transliteration, Hindi ,Sikh scriptures,sikhism, sikh, mahan kosh,hukamnama, dasam granth,granth,gurdas,guru,raag, vaaran,varan,kabit,nand lal,ang,gurdwara,hukumnama,bhagats;"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+           <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

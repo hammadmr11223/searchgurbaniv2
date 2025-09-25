@@ -11,6 +11,7 @@ import { ApiHelper } from '@/helpers/ApiHelper';
 import ShabadPrint from '@/components/ShabadPrint';
 import Spinner from '@/components/Spinner';
 import { useParams } from 'next/navigation';
+import Head from 'next/head';
 
 function BnlShabadPrint() {
 //    const {type, shabad_id, lineno, title } = useParams();
@@ -48,6 +49,16 @@ const getShabadLines = async (id) => {
 }
     return (
         <div>
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <ShabadPrint  title={title} angData={angData} headingData={headingData} poet='bnl'/> 
         </div>

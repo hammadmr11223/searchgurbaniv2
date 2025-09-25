@@ -8,14 +8,16 @@ import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import AkIndex from '@/components/AkIndex';
 import Spinner from '@/components/Spinner';
-import {Helmet} from "react-helmet";
+
 import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Head from 'next/head';
 //import imgs from './assets/img/content/ggs_01.jpg'
 
 function ChapterIndex() {
     const [loader, setLoader] = useState(false);
     const [indexArr, setIndexArr] = useState([]);
+     const [headingData, setHeadindData] = useState([]);
     useEffect (() => {
         getIndex();
     },[])
@@ -26,6 +28,7 @@ function ChapterIndex() {
                 setLoader(false);
                 console.log('Index', resData.data);
                 setIndexArr(resData.data.chapters);
+                setHeadindData(resData.data)
             })
             .catch((err) => {
                 setLoader(false);
@@ -34,13 +37,17 @@ function ChapterIndex() {
     }
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Amrit Kirtan Gutka Chapter index`}
-                description={`Explore Amrit Keertan Gutka Chapter Index  at  searchgurbani.com`}
-                keywords="Gurbani Kirtan,amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Kabit, Bhai Gurdas, Vaaran, Varan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+            
+           <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

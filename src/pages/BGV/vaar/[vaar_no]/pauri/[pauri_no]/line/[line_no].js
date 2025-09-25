@@ -33,6 +33,7 @@ import { usePage } from '@/components/PageContext';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import Head from 'next/head';
 
 const PauriByPauri = (props) => {
     // const location = useLocation();
@@ -637,22 +638,17 @@ const PauriByPauri = (props) => {
     };
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Vaaran Bhai Gurdas -: Vaar${headingData.current_vaar} - Pauri ${headingData.current_pauri} - ${headingData.pauri_info && headingData.pauri_info.length > 0
-                    ? headingData.pauri_info[0].pauri_name_roman
-                    : 'Unknown Pauri'
-                } -: searchgurbani.com`}
-                description={`Vaaran Bhai Gurdas:- Vaar${headingData.current_vaar} - Pauri ${headingData.current_pauri}-${headingData.pauri_info && headingData.pauri_info.length > 0
-                            ? headingData.pauri_info[0].pauri_name_roman 
-                            : 'Unknown Pauri'
-                        } ${headingData.pauri_info && headingData.pauri_info.length > 0
-                            ? headingData.pauri_info[0].pauri_name_punjabi 
-                            : 'Unknown Pauri'
-                        }:-searchgurbani.com`}
-                keywords="Gurbani Kirtan,Amrit Keertan,Bhai Gurdas,vaar, Gurbani, Shabad Keertan,granth, Vaaran, VaranInvocation"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+            
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

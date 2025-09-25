@@ -12,8 +12,7 @@ import Spinner from '@/components/Spinner';
 import jathaImage from '@/assets/img/content/jatha.jpg';
 import tabalaImage from '@/assets/img/content/tabla.jpg';
 import raagiImage from '@/assets/img/content/raagi.gif';
-import Helmet from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function Golssary() {
     const [raag, setRaag] = useState([]);
@@ -25,13 +24,16 @@ function Golssary() {
 
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Glossary of Indian Musical Terms -: searchgurbani.com`}
-                description={`Glossary of Indian Musical Terms in Gurbani Raags- searchgurbani.com`}
-                keywords="saaj, tabla, veena, surinda, rabab, sarangi, flute, harmonium"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+            <Head>
+                          <title>{`Glossary of Indian Musical Terms -: searchgurbani.com`} </title>
+                          <meta name="description" content={`Glossary of Indian Musical Terms in Gurbani Raags- searchgurbani.com`} />
+                          <meta name="keywords" content="saaj, tabla, veena, surinda, rabab, sarangi, flute, harmonium" />
+                          <meta property="og:title" content={`Glossary of Indian Musical Terms -: searchgurbani.com`} />
+                          <meta property="og:description" content={`Glossary of Indian Musical Terms in Gurbani Raags- searchgurbani.com`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
 
             {loader && <Spinner />}
             <section className='p-5' >

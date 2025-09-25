@@ -8,8 +8,7 @@ import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import initialFormState from '@/components/defalutPref';
 import FontChange from '@/components/FontChange';
-import { Helmet } from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function CyberHukumnama() {
     const [loader, setLoader] = useState(false);
@@ -39,10 +38,10 @@ function CyberHukumnama() {
 
     useEffect(() => {
         const angNo = Math.floor(Math.random() * 467 + 1).toString();
-        console.log('555555555', angNo)
+       // console.log('555555555', angNo)
         getChapter(angNo);
         const savedPreference = localStorage.getItem('Preference');
-        console.log('Preference', savedPreference);
+       // console.log('Preference', savedPreference);
         if (savedPreference) {
             const preferences = JSON.parse(savedPreference);
             setPref(preferences)
@@ -86,13 +85,16 @@ function CyberHukumnama() {
     }
     return (
         <div>
-            <HelmetWrapper
-                title={`Hukumnama - Ang ${pageInfo.pageno} -: searchgurbani.com`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords="Hukum, Hukumnama, Darbar sahib, Harmandir sahib, Amritsar"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{pageInfo?.title} </title>
+                          <meta name="description" content={pageInfo?.description} />
+                          <meta name="keywords" content={pageInfo?.keywords} />
+                          <meta property="og:title" content={pageInfo?.title} />
+                          <meta property="og:description" content={pageInfo?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-shabad bannerXX p-5' >
                 <div className='container py-2'>
                     <div className='row'>

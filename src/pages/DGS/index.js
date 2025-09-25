@@ -9,13 +9,13 @@ import { ApiHelper } from '@/helpers/ApiHelper';
 //import imgs from './assets/img/content/ggs_01.jpg'
 import introbannar from '@/assets/img/intro-bannar.webp';
 import Spinner from '@/components/Spinner';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function DgsIntroduction() {
     const [introData, setIntroData] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
+    const [headingData, setHeadindData] = useState([]);
     useEffect(() => {
         getIntro()
     }, [])
@@ -47,8 +47,10 @@ function DgsIntroduction() {
         ...res.data.data,
         html: updatedHtml
       });
+      setHeadindData(res.data.data)
     } else {
       setIntroData(res.data.data);
+      setHeadindData(res.data.data)
     }
   } catch (err) {
     console.error(err);
@@ -60,13 +62,16 @@ function DgsIntroduction() {
    
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Introduction to Sri Dasam Granth Sahib : ਸ੍ਰੀ ਦਸਮ ਗ੍ਰੰਥ ਸਾਹਿਬ -: searchgurbani.com`}
-                description={`The complete literary works of Guru Gobind Singh Ji are compiled in the Dasam Granth. These were put together in the present form some time after the guru left this worldly form by Bhai Mani Singh and some other leading sikhs who were always present in the darbar`}
-                keywords="Dasam, Granth, Jaap, Akaal, Ustat, Bacchitar, Zafarnama"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1 intro-bg'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

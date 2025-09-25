@@ -199,9 +199,14 @@ function Header(props) {
     } else if (path.startsWith('/sundar-gutka/GGS/baanis')) {
       setColor('--color-9', '--color-9L', '--color-9s');
     } 
+    else if (path.startsWith('/feedback')) {
+      
+      setColor('--color-11', '--color-11L');
+    } 
     else if (path.startsWith('/sundar-gutka/DS/baanis')) {
       setColor('--color-9', '--color-9L', '--color-9s');
     } 
+    
     
     else {
       setColor('--color-common', '--color-commonL', '--color-commons');
@@ -294,7 +299,7 @@ function Header(props) {
     return () => observer.disconnect();
   }, []);
   // const shar = `${window.location.origin}${location.pathname}`;
-  console.log('gfyfyy,%%%%%%%%%%%5', currentPage)
+//  console.log('gfyfyy,%%%%%%%%%%%5', currentPage)
   const handleShareModal = (platform) => {
     let shareLink = '';
     const type = localStorage.getItem('BnlType');
@@ -812,28 +817,28 @@ function Header(props) {
             {/* Guru Granth Sahib DropDown  */}
             <li>
               <NavDropdown title="Guru Granth Sahib" id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} href="/GGS">
+                <NavDropdown.Item as={Link} className={pathname === '/GGS' ? 'active' : ''}  href="/GGS">
                   Introduction
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/GGS/angByAng">
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/angByAng' ? 'active' : ''}  href="/GGS/angByAng">
                   Ang by Ang
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/GGS/sggsIndex">
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/sggsIndex' ? 'active' : ''}  href="/GGS/sggsIndex">
                   SGGS Shabad Index
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/GGS/authorIndex">
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/authorIndex' ? 'active' : ''}  href="/GGS/authorIndex">
                   Author Index
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/GGS/sggsWorldLanguage">
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/sggsWorldLanguage' ? 'active' : ''}  href="/GGS/sggsWorldLanguage">
                   SGGS in World Languages
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/GGS/ggsAdvanceSearch">
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/ggsAdvanceSearch' ? 'active' : ''}  href="/GGS/ggsAdvanceSearch">
                   Search Guru Granth Sahib
                 </NavDropdown.Item>
               </NavDropdown>
             </li>
             <li>
-            {/* Amrit Keertan DropDown  */}
+            {/* Amrit Keertan DropDown   */}
               <NavDropdown title="Amrit Keertan" id="navbarScrollingDropdown">
                 <NavDropdown.Item as={Link} className={pathname === '/AK' ? 'active' : ''} href="/AK">
                   Introduction
@@ -878,19 +883,19 @@ function Header(props) {
             {/* Dasam Granth Sahib DropDown  */}
             <li>
               <NavDropdown title="Dasam Granth Sahib" id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} href="/DGS/">
+                <NavDropdown.Item as={Link} className={pathname === '/DGS' ? 'active' : ''} href="/DGS">
                   Introduction
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/DGS/dgPageByPage">
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgPageByPage' ? 'active' : ''} href="/DGS/dgPageByPage">
                   Page by Page
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/DGS/dgChapterIndexPB">
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgChapterIndexPB' ? 'active' : ''} href="/DGS/dgChapterIndexPB">
                   Chapter Index Punjabi
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/DGS/dgChapterIndexEN">
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgChapterIndexEN' ? 'active' : ''} href="/DGS/dgChapterIndexEN">
                   Chapter Index English
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/DGS/dgsSearch">
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgsSearch' ? 'active' : ''} href="/DGS/dgsSearch">
                   Search Dasam Granth
                 </NavDropdown.Item>
               </NavDropdown>
@@ -898,10 +903,10 @@ function Header(props) {
             {/* Kabit Savaiye dropdown  */}
             <li>
               <NavDropdown title="Kabit Savaiye" id="navbarScrollingDropdown">
-                <NavDropdown.Item as={Link} href="/KS/kabitByKabit">
+                <NavDropdown.Item as={Link} className={pathname === '/KS/kabitByKabit' ? 'active' : ''} href="/KS/kabitByKabit">
                   Kabit by Kabit
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/KS/ksSearch">
+                <NavDropdown.Item as={Link} className={pathname === '/KS/ksSearch' ? 'active' : ''} href="/KS/ksSearch">
                   Search Kabit Savaiye
                 </NavDropdown.Item>
               </NavDropdown>
@@ -1046,27 +1051,27 @@ function Header(props) {
           <div className='socia-share'>
             <ul>
               <li>
-                <Link className='soc-icon' onClick={() => handleShareModal('facebook')}>
+                <Link href="" className='soc-icon' onClick={() => handleShareModal('facebook')}>
                   <Image src={facebook} className="img-fluid donate" alt="Responsive image" />
                 </Link>
               </li>
               <li>
-                <Link className='soc-icon' onClick={() => handleShareModal('twitter')}>
+                <Link href="" className='soc-icon' onClick={() => handleShareModal('twitter')}>
                   <Image src={twitter} className="img-fluid donate" alt="Responsive image" />
                 </Link>
               </li>
               <li>
-                <Link className='soc-icon' onClick={() => handleShareModal('telegram')}>
+                <Link href="" className='soc-icon' onClick={() => handleShareModal('telegram')}>
                   <Image src={telegram} className="img-fluid donate" alt="Responsive image" />
                 </Link>
               </li>
               <li>
-                <Link className='soc-icon' onClick={() => handleShareModal('whatsapp')}>
+                <Link href="" className='soc-icon' onClick={() => handleShareModal('whatsapp')}>
                   <Image src={whatsapp} className="img-fluid donate" alt="Responsive image" />
                 </Link>
               </li>
               <li>
-                <Link className='soc-icon' onClick={() => handleShareModal('mail')}>
+                <Link href="" className='soc-icon' onClick={() => handleShareModal('mail')}>
                   <Image src={mail} className="img-fluid donate" alt="Responsive image" />
                 </Link>
               </li>
@@ -1206,7 +1211,7 @@ function Header(props) {
             {/*  <h6 className='text-dark text-center mt-4 ' >Login with</h6>
             <div className='d-flex justify-content-center mt-4'>
               <Link className='soc-icon' onClick={() => handleShareModal('facebook')}>
-                <Image src={facebook} className="img-fluid donate" alt="Responsive image" />
+                <Image src={facebook} className="img-fluid donate" alt="Responsive image" /> 
               </Link>
             </div> */}
           </div>

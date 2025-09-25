@@ -26,11 +26,10 @@ import initialFormState from '@/components/defalutPref';
 import MouseOverDic from '@/components/MouseOverDic';
 import { formatTextForCopyBvgAndKs } from '@/components/TextCopyBvgAndKs';
 import { MultiSelect } from "react-multi-select-component";
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import { usePage } from '@/components/PageContext';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import Head from 'next/head';
 
 const KabitByKabit = (props) => {
     // const location = useLocation();
@@ -620,13 +619,16 @@ const KabitByKabit = (props) => {
     };
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Kabit Bhai Gurdas : Kabit ${angNo} -: ਕਬਿਤ ਭਾਈ ਗੁਰਦਾਸ -: searchgurbani.com`}
-                description={`Learn Explore and Relish Kabit Bhai Gurdas : Kabit ${angNo} : ਕਬਿਤ ਭਾਈ  ਗੁਰਦਾਸ  :- searchgurbani.com`}
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+             <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

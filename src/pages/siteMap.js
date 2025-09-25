@@ -6,8 +6,10 @@ import Axios from 'axios';
 import {Helmet} from "react-helmet";
 import HelmetWrapper from '../components/CommonHelmet';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 function SiteMap() {
+     const pathname = usePathname();
    
     return (
         <section className='p-4' >
@@ -25,11 +27,11 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Sri Guru Granth Sahib</h3>
                             <ul>
-                                <li><Link href='/guru-granth-sahib/introduction'>Introduction</Link></li>
-                                <li><Link href='/guru-granth-sahib/ang-by-ang'>Ang by Ang</Link></li>
-                                <li><Link href='/guru-granth-sahib/index/chapter'>Chapter Index</Link></li>
-                                <li><Link href='/guru-granth-sahib/index/author'>Author Index</Link></li>
-                                <li><Link href='/guru-granth-sahib/search'>Search Sri Guru Granth Sahib ji</Link></li>
+                                <li><Link className={pathname === '/GGS' ? 'active' : ''} href='/GGS'>Introduction</Link></li> 
+                                <li><Link className={pathname === '/GGS/angByAng' ? 'active' : ''} href='/GGS/angByAng'>Ang by Ang</Link></li>
+                                <li><Link className={pathname === '/GGS' ? 'active' : ''} href='/guru-granth-sahib/index/chapter'>Chapter Index</Link></li>
+                                <li><Link className={pathname === '/GGS/authorIndex' ? 'active' : ''} href='/GGS/authorIndex'>Author Index</Link></li>
+                                <li><Link className={pathname === '/GGS/ggsAdvanceSearch' ? 'active' : ''} href='/GGS/ggsAdvanceSearch'>Search Sri Guru Granth Sahib ji</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -37,13 +39,13 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Amrit Keertan Gutka</h3>
                             <ul>
-                                <li><Link href='/amrit-keertan/introduction'>Introduction</Link></li>
-                                <li><Link href='/amrit-keertan/page-by-page'>Browse Page by Page</Link></li>
-                                <li><Link href='/amrit-keertan/index/chapter'>Chapter Index</Link></li>
-                                <li><Link href='/amrit-keertan/index/english'>English Index</Link></li>
-                                <li><Link href='/amrit-keertan/index/punjabi'>Punjabi Index</Link></li>
-                                <li><Link href='/amrit-keertan/index/hindi'>Hindi Index</Link></li>
-                                <li><Link href='/amrit-keertan/search'>Search Amrit Keertan Gutka</Link></li>
+                                <li><Link className={pathname === '/AK' ? 'active' : ''} href='/AK'>Introduction</Link></li>
+                                <li><Link className={pathname === '/AK/pageByPage' ? 'active' : ''} href='/AK/pageByPage'>Browse Page by Page</Link></li>
+                                <li><Link className={pathname === '/AK/chapterIndex' ? 'active' : ''} href='/AK/chapterIndex'>Chapter Index</Link></li>
+                                <li><Link className={pathname === '/AK/englishIndex' ? 'active' : ''} href="/AK/englishIndex">English Index</Link></li>
+                                <li><Link className={pathname === '/AK/punjabiIndex' ? 'active' : ''} href="/AK/punjabiIndex">Punjabi Index</Link></li>
+                                <li><Link className={pathname === '/AK/hindiIndex' ? 'active' : ''} href="/AK/hindiIndex">Hindi Index</Link></li>
+                                <li><Link className={pathname === '/AK/akSearch' ? 'active' : ''} href="/AK/akSearch">Search Amrit Keertan Gutka</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -51,10 +53,10 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Bhai Gurdas Vaaran</h3>
                             <ul>
-                                <li><Link href='/bhai-gurdas-vaaran/introduction'>Introduction</Link></li>
-                                <li><Link href='/bhai-gurdas-vaaran/pauri-by-pauri'>Browse Pauri by Pauri</Link></li>
-                                <li><Link href='/bhai-gurdas-vaaran/index/vaar'>Vaar Index</Link></li>
-                                <li><Link href='/bhai-gurdas-vaaran/search'>Search Bhai Gurdas Vaaran</Link></li>
+                                <li><Link className={pathname === '/BGV' ? 'active' : ''} href="/BGV">Introduction</Link></li>
+                                <li><Link className={pathname === '/BGV/pauriByPauri' ? 'active' : ''} href="/BGV/pauriByPauri">Browse Pauri by Pauri</Link></li>
+                                <li><Link className={pathname === '/BGV/vaarIndex' ? 'active' : ''} href="/BGV/vaarIndex">Vaar Index</Link></li>
+                                <li><Link className={pathname === '/BGV/BgvSearch' ? 'active' : ''} href="/BGV/BgvSearch">Search Bhai Gurdas Vaaran</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -62,10 +64,10 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Dasam Granth Sahib</h3>
                             <ul>
-                                <li><Link href='/dasam-granth/introduction'>Introduction</Link></li>
-                                <li><Link href='/dasam-granth/index/chapter/en'>Chapter Index</Link></li>
-                                <li><Link href='/dasam-granth/page-by-page'>Browse Page by Page</Link></li>
-                                <li><Link href='/dasam-granth/search'>Search Dasam Granth Sahib</Link></li>
+                                <li><Link className={pathname === '/DGS' ? 'active' : ''} href="/DGS">Introduction</Link></li>
+                                <li><Link className={pathname === '/DGS/dgChapterIndexPB' ? 'active' : ''} href="/DGS/dgChapterIndexPB" >Chapter Index</Link></li>
+                                <li><Link className={pathname === '/DGS/dgPageByPage' ? 'active' : ''} href="/DGS/dgPageByPage" >Browse Page by Page</Link></li>
+                                <li><Link className={pathname === '/DGS/dgsSearch' ? 'active' : ''} href="/DGS/dgsSearch">Search Dasam Granth Sahib</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -73,8 +75,8 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Kabit Bhai Gurdas</h3>
                             <ul>
-                                <li><Link href='/kabit-savaiye/kabit-by-kabit'>Browse Kabit by Kabit</Link></li>
-                                <li><Link href='/kabit-savaiye/search'>Search Kabit Bhai Gurdas</Link></li>
+                                <li><Link className={pathname === '/KS/kabitByKabit' ? 'active' : ''} href="/KS/kabitByKabit">Browse Kabit by Kabit</Link></li>
+                                <li><Link className={pathname === '/KS/ksSearch' ? 'active' : ''} href="/KS/ksSearch">Search Kabit Bhai Gurdas</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -84,14 +86,14 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Bhai Nand Lal Baani</h3>
                             <ul>
-                                <li><Link href='/bhai-nand-lal/ghazal'>Divan-e-Goya : Ghazals </Link></li>
-                                <li><Link href='/bhai-nand-lal/quatrains'>Rubaayee</Link></li>
-                                <li><Link href='/bhai-nand-lal/zindginama'>Zindginama</Link></li>
-                                <li><Link href='/bhai-nand-lal/ganjnama'>Ganjnama</Link></li>
-                                <li><Link href='/bhai-nand-lal/jot-bikas'>Jot Bikas (Punjabi)</Link></li>
-                                <li><Link href='/bhai-nand-lal/jot-bikas-persian'>Jot Bikas (Persian)</Link></li>
-                                <li><Link href='/bhai-nand-lal/rahitnama'>Rahit Nama</Link></li>
-                                <li><Link href='/bhai-nand-lal/tankahnama'>Tankah Nama</Link></li>
+                                <li><Link className={pathname === '/BNL/ghazal' ? 'active' : ''} href="/BNL/ghazal">Divan-e-Goya : Ghazals </Link></li>
+                                <li><Link className={pathname === '/BNL/quatrains' ? 'active' : ''} href="/BNL/quatrains">Rubaayee</Link></li>
+                                <li><Link className={pathname === '/BNL/zindginama' ? 'active' : ''} href="/BNL/zindginama">Zindginama</Link></li>
+                                <li><Link className={pathname === '/BNL/ganjnama' ? 'active' : ''} href="/BNL/ganjnama">Ganjnama</Link></li>
+                                <li><Link className={pathname === '/BNL/jot-bikas' ? 'active' : ''} href="/BNL/jot-bikas">Jot Bikas (Punjabi)</Link></li>
+                                <li><Link className={pathname === '/BNL/jot-bikas-persian' ? 'active' : ''} href="/BNL/jot-bikas-persian">Jot Bikas (Persian)</Link></li>
+                                <li><Link className={pathname === '/BNL/rahitnama' ? 'active' : ''} href="/BNL/rahitnama">Rahit Nama</Link></li>
+                                <li><Link className={pathname === '/BNL/tankahnama' ? 'active' : ''} href="/BNL/tankahnama">Tankah Nama</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -101,47 +103,47 @@ function SiteMap() {
                             <ul>
                                 <li><Link href='/'>Nitnem</Link>
                                 <ul className='sub-sitemap' >
-                                    <li><Link href='/baanis/japji-sahib'>Japji Sahib</Link></li>
-                                    <li><Link href='/baanis/jaap-sahib'>Jaap Sahib</Link></li>
-                                    <li><Link href='/baanis/tvai-prasadh-savaiye'>Tvai Prasadh Savaiye</Link></li>
-                                    <li><Link href='/baanis/chaupai-sahib'>Chaupai Sahib</Link></li>
-                                    <li><Link href='/baanis/anand-sahib'>Anand Sahib</Link></li>
-                                    <li><Link href='/baanis/rehraas-sahib'>Rehraas Sahib</Link></li>
-                                    <li><Link href='/baanis/kirtan-sohila'>Kirtan Sohila</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/baanis/japji-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/japji-sahib">Japji Sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/baanis/jaap-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/jaap-sahib">Jaap Sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/baanis/tvai-prasadh-savaiye' ? 'active' : ''} href="/sundar-gutka/baanis/tvai-prasadh-savaiye">Tvai Prasadh Savaiye</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/baanis/chaupai-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/chaupai-sahib">Chaupai Sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/baanis/anand-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/anand-sahib">Anand Sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/baanis/rehraas-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/rehraas-sahib">Rehraas Sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/baanis/kirtan-sohila' ? 'active' : ''} href="/sundar-gutka/baanis/kirtan-sohila">Kirtan Sohila</Link></li>
                                 </ul>
                                 </li>
                                 <li><Link href='/'>Guru Granth Sahib</Link>
                                 <ul className='sub-sitemap' >
-                                    <li><Link href='/baanis/anand-sahib-bhog'>Anand Sahib(Bhog) </Link></li>
-                                    <li><Link href='/baanis/laavan-anand-karaj'>Laavan(Anand Karaj) </Link></li>
-                                    <li><Link href='/baanis/asa-ki-vaar'>Asa Ki Vaar</Link></li>
-                                    <li><Link href='/baanis/sukhmani-sahib'>Sukhmani Sahib</Link></li>
-                                    <li><Link href='/baanis/sidh-gosht'>Sidh Gosht</Link></li>
-                                    <li><Link href='/baanis/ramkali-sadh'>Ramkali Sadh</Link></li>
-                                    <li><Link href='/baanis/dhakanee-oankaar'>Dhakanee Oankaar</Link></li>
-                                    <li><Link href='/baanis/baavan-akhree'>Baavan Akhree</Link></li>
-                                    <li><Link href='/baanis/shabad-hazare'>Shabad Hazare</Link></li>
-                                    <li><Link href='/baanis/baarah-maaha'>Baarah Maaha</Link></li>
-                                    <li><Link href='/baanis/sukhmana-sahib'>Sukhmana sahib</Link></li>
-                                    <li><Link href='/baanis/dukh-bhanjani-sahib'>Dukh Bhanjani Sahib</Link></li>
-                                    <li><Link href='/baanis/salok-sehskritee'>Salok Sehskritee</Link></li>
-                                    <li><Link href='/baanis/gathaa'>Gathaa</Link></li>
-                                    <li><Link href='/baanis/phunhay-m5'>Phunhay M: 5</Link></li>
-                                    <li><Link href='/baanis/chaubolay-m5'>Chaubolay M:5</Link></li>
-                                    <li><Link href='/baanis/salok-kabeer-ji'>Salok Kabeer ji</Link></li>
-                                    <li><Link href='/baanis/salok-farid-ji'>Salok Farid ji</Link></li>
-                                    <li><Link href='/baanis/savaiye-m1'>Savaiye M: 1</Link></li>
-                                    <li><Link href='/baanis/savaiye-m2'>Savaiye M: 2</Link></li>
-                                    <li><Link href='/baanis/savaiye-m3'>Savaiye M: 3</Link></li>
-                                    <li><Link href='/baanis/savaiye-m4'>Savaiye M: 4</Link></li>
-                                    <li><Link href='/baanis/savaiye-m5'>Savaiye M: 5</Link></li>
-                                    <li><Link href='/baanis/salok-m9'>Salok M: 9</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/anand-sahib-bhog' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/anand-sahib-bhog">Anand Sahib(Bhog) </Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/laavan-anand-karaj' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/laavan-anand-karaj">Laavan(Anand Karaj) </Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/asa-ki-vaar' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/asa-ki-vaar">Asa Ki Vaar</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/sukhmani-sahib' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/sukhmani-sahib">Sukhmani Sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/sidh-gosht' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/sidh-gosht">Sidh Gosht</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/ramkali-sadh' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/ramkali-sadh">Ramkali Sadh</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/dhakanee-oankaar' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/dhakanee-oankaar">Dhakanee Oankaar</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/baavan-akhree' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/baavan-akhree">Baavan Akhree</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/shabad-hazare' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/shabad-hazare">Shabad Hazare</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/baarah-maaha' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/baarah-maaha">Baarah Maaha</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/sukhmana-sahib' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/sukhmana-sahib">Sukhmana sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/dukh-bhanjani-sahib' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/dukh-bhanjani-sahib">Dukh Bhanjani Sahib</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/salok-sehskritee' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-sehskritee">Salok Sehskritee</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/gathaa' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/gathaa">Gathaa</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/phunhay-m5' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/phunhay-m5">Phunhay M: 5</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/chaubolay-m5' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/chaubolay-m5">Chaubolay M:5</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/salok-kabeer-ji' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-kabeer-ji">Salok Kabeer ji</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/salok-farid-ji' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-farid-ji">Salok Farid ji</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m1' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m1">Savaiye M: 1</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m2' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m2">Savaiye M: 2</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m3' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m3">Savaiye M: 3</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m4' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m4">Savaiye M: 4</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m5' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m5">Savaiye M: 5</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/GGS/baanis/salok-m9' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-m9">Salok M: 9</Link></li>
                                 </ul>
                                 </li>
                                 <li><Link href='/'>Dasam Granth</Link>
                                 <ul className='sub-sitemap' >
-                                    <li><Link href='/baanis/akal-ustati'>Akal Ustati</Link></li>
-                                    <li><Link href='/baanis/bachitar-natak'>Bachitar Natak</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/DS/baanis/akal-ustati' ? 'active' : ''} href="/sundar-gutka/DS/baanis/akal-ustati">Akal Ustati</Link></li>
+                                    <li><Link className={pathname === '/sundar-gutka/DS/baanis/bachitar-natak' ? 'active' : ''} href="/sundar-gutka/DS/baanis/bachitar-natak">Bachitar Natak</Link></li>
                                 </ul>
                                 </li>
                             </ul>
@@ -151,20 +153,20 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Resources</h3>
                             <ul>
-                                <li><Link href='/mahan-kosh'>GurShabad Ratanakar Mahankosh </Link></li>
-                                <li><Link href='/guru-granth-kosh'>Sri Guru Granth Kosh</Link></li>
-                                <li><Link href='/sri-nanak-prakash'>Sri Nanak Prakash</Link></li>
-                                <li><Link href='/sri-gur-pratap-suraj-granth'>Sri Gur Pratap Suraj Granth</Link></li>
-                                <li><Link href='/faridkot-wala-teeka'>Faridkot Wala Teeka</Link></li>
-                                <li><Link href='/sri-guru-granth-darpan'>Sri Guru Granth Darpan</Link></li>
-                                <li><Link href='/maansarovar'>Maansarovar</Link></li>
-                                <li><Link href='/compilation/page/1'>Compilation of Sri Guru Granth Sahib</Link></li>
-                                <li><Link href='/music/page/1'>Indian Classical Music and Sikh Kirtan </Link></li>
-                                <li><Link href='/gurus'>Guru Sahiban</Link></li>
-                                <li><Link href='/bhagats'>Bhagat Sahiban</Link></li>
-                                <li><Link href='/bhatts'>Bhatt Sahiban</Link></li>
-                                <li><Link href='/raags'>Gurbani Raags</Link></li>
-                                <li><Link href='/sgdv'>Search Gurbani Desktop Version</Link></li>
+                                <li><Link className={pathname === '/Resources/GSRM/Mahankosh' ? 'active' : ''} href="/Resources/GSRM/Mahankosh">GurShabad Ratanakar Mahankosh </Link></li>
+                                <li><Link className={pathname === '/Resources/SGGK/SGGKSearch' ? 'active' : ''} href="/Resources/SGGK/SGGKSearch">Sri Guru Granth Kosh</Link></li>
+                                <li><Link className={pathname === '/Resources/SNP/SNPrakash' ? 'active' : ''} href="/Resources/SNP/SNPrakash">Sri Nanak Prakash</Link></li>
+                                <li><Link className={pathname === '/Resources/SGPSG' ? 'active' : ''} href="/Resources/SGPSG">Sri Gur Pratap Suraj Granth</Link></li>
+                                <li><Link className={pathname === '/Resources/FWT' ? 'active' : ''} href="/Resources/FWT">Faridkot Wala Teeka</Link></li>
+                                <li><Link className={pathname === '/Resources/SGGD' ? 'active' : ''} href="/Resources/SGGD">Sri Guru Granth Darpan</Link></li>
+                                <li><Link className={pathname === '/Resources/Maansarovar' ? 'active' : ''} href="/Resources/Maansarovar">Maansarovar</Link></li>
+                                <li><Link className={pathname === '/Resources/Compilation/page/1' ? 'active' : ''} href="/Resources/Compilation/page/1">Compilation of Sri Guru Granth Sahib</Link></li>
+                                <li><Link  className={pathname === '/Resources/Music/page/1' ? 'active' : ''} href="/Resources/Music/page/1">Indian Classical Music and Sikh Kirtan </Link></li>
+                                <li><Link className={pathname === '/gurus' ? 'active' : ''} href="/gurus">Guru Sahiban</Link></li>
+                                <li><Link className={pathname === '/bhagats' ? 'active' : ''} href="/bhagats">Bhagat Sahiban</Link></li>
+                                <li><Link className={pathname === '/bhatts' ? 'active' : ''} href="/bhatts">Bhatt Sahiban</Link></li>
+                                <li><Link className={pathname === '/raags' ? 'active' : ''} href="/raags">Gurbani Raags</Link></li>
+                                <li><Link className={pathname === '/Resources/SearchGurbaniDV' ? 'active' : ''} href="/Resources/SearchGurbaniDV">Search Gurbani Desktop Version</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -172,9 +174,9 @@ function SiteMap() {
                         <div className='site-itm'>
                             <h3>Hukumnama</h3>
                             <ul>
-                                <li><Link href='/hukumnama'>Hukumnama Index</Link></li>
-                                <li><Link href='/hukum'>Sri Darbar Sahib</Link></li>
-                                <li><Link href='/hukumnama/cyber'>Cyber Hukumnama</Link></li>
+                                <li><Link className={pathname === '/Resources/Hukumnama/HukumIndex' ? 'active' : ''} href="/Resources/Hukumnama/HukumIndex">Hukumnama Index</Link></li>
+                                <li><Link className={pathname === '/Resources/Hukumnama' ? 'active' : ''} href="/Resources/Hukumnama">Sri Darbar Sahib</Link></li>
+                                <li><Link className={pathname === '/Resources/Hukumnama/CyberHukumnama' ? 'active' : ''} href="/Resources/Hukumnama/CyberHukumnama">Cyber Hukumnama</Link></li>
                             </ul>
                         </div>
                     </div>

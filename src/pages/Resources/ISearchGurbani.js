@@ -15,9 +15,8 @@ import appstore from '@/assets/icons/appstore.svg';
 import plastore from '@/assets/icons/platstore.svg';
 import poster from '@/assets/img/isg-poster-sm.jpg';
 import Modal from 'react-bootstrap/Modal';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function ISearchGurbani() {
     const [share, setShare] = useState(false);
@@ -36,13 +35,17 @@ function ISearchGurbani() {
    
     return (
         <div>
-            <HelmetWrapper
-                title={`iSearchGurbani v4.0 Gurbani Search Software-: searchgurbani.com`}
-                description={`Download iSearchGurbani: A cross Platform software for exploring sikh scriptures and displaying Gurbani text on projectors . Available for PC, Mac, Linux , Android smartphones and tablets and IPhone and Ipad`}
-                keywords="Mobile Version, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Bhai Gurdas, Vaaran, Varan, Mahankosh, Kosh, Hukumnama, Baanis, Japji, Jaap, Sukhmani, Ardaas"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+            
+             <Head>
+                          <title>{`iSearchGurbani v4.0 Gurbani Search Software-: searchgurbani.com`} </title>
+                          <meta name="description" content={`Download iSearchGurbani: A cross Platform software for exploring sikh scriptures and displaying Gurbani text on projectors . Available for PC, Mac, Linux , Android smartphones and tablets and IPhone and Ipad`} />
+                          <meta name="keywords" content="Mobile Version, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Bhai Gurdas, Vaaran, Varan, Mahankosh, Kosh, Hukumnama, Baanis, Japji, Jaap, Sukhmani, Ardaas" />
+                          <meta property="og:title" content={`iSearchGurbani v4.0 Gurbani Search Software-: searchgurbani.com`} />
+                          <meta property="og:description" content={`Download iSearchGurbani: A cross Platform software for exploring sikh scriptures and displaying Gurbani text on projectors . Available for PC, Mac, Linux , Android smartphones and tablets and IPhone and Ipad`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1 intro-bg'>
             <div className="container">
                 <div className="second-container intro-bkg">

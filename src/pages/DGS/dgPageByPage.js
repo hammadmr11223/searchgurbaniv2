@@ -26,11 +26,10 @@ import initialFormState from '@/components/defalutPref';
 import MouseOverDic from '@/components/MouseOverDic';
 import { formatTextForCopyDg } from '@/components/TextCopyDg';
 import { MultiSelect } from "react-multi-select-component";
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import { usePage } from '@/components/PageContext';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const DGPageByPage = (props) => {
     // const location = useLocation();
@@ -559,13 +558,16 @@ const DGPageByPage = (props) => {
       }; 
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Sri Dasam Granth Sahib -: Page : ${angNo} -: ਸ੍ਰੀ ਦਸਮ ਗ੍ਰੰਥ ਸਾਹਿਬ -: searchgurbani.com`}
-                description={`Explore Page :${angNo}  of Sri Dasam Granth Sahib : ਸ੍ਰੀ ਦਸਮ ਗ੍ਰੰਥ ਸਾਹਿਬ at searchgurbani.com`}
-                keywords="Gurbani Kirtan, Amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru granth, granth"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+           <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

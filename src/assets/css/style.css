@@ -28,6 +28,8 @@ body {
     --color-8: #023632;
     --color-9: #652B00;
     --colo-x: #F0CA06;
+   /*  --color-11: #1B263B; */
+  --color-11: #2546b3;
     --color-common: #DD761C;
 
     --color-1L: #fff5f2;
@@ -40,6 +42,7 @@ body {
     --color-8L: #edfffc;
     --color-9L: #fff7ee;
     --colo-xL: #fffbe8;
+    --color-11L: #415A77;
     --color-commonL: #fff4ec;
 
     --color-1s: #f8ded6;
@@ -1058,6 +1061,15 @@ input.form-control.border-secondary.py-2.search-r {
     text-align: center;
     margin-bottom: 30px;
 }
+.main-heading-Feedback {
+    font-size: 30px;
+    line-height: 40.98px;
+    font-weight: 700;
+    font-family: Kaisei Decol;
+    color: #1a3180 !important;
+    text-align: center;
+    margin-bottom: 30px;
+}
 .row.w-60.search-main-grd p.paragraph {
     color: var(--color-1);
     text-align: center;
@@ -1722,6 +1734,20 @@ button.sub-feed-bttn {
     height: 45px;
     padding: 0px 30px;
     background: var(--current-color, var(--color-1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    float: right;
+    border:none;
+   
+}
+
+button.sub-feed-bttn1 {
+    color: #fff;
+    height: 45px;
+    padding: 0px 30px;
+    background: var(--current-color, var(--color-x1));
     display: flex;
     align-items: center;
     justify-content: center;

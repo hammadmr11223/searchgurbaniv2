@@ -6,10 +6,9 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function SGPSGIndex() {
     //const navigate = useNavigate();
@@ -20,16 +19,12 @@ function SGPSGIndex() {
    const volume_id = chapterId
     console.log('INDEX ID',volume_id)
     const [indexArr, setIndexArr] = useState([]);
-      const [currentUrl, setCurrentUrl] = useState("");
+       const [headingData, setheadingData]= useState();
     useEffect(() => {
         getIndex();
     }, [])
 
-        useEffect(() => {
-                           if (typeof window !== "undefined") {
-                             setCurrentUrl(window.location.href);
-                           }
-                         }, []);
+      
 
     const getIndex = async () => {
         setLoader(true)
@@ -38,6 +33,7 @@ function SGPSGIndex() {
                 setLoader(false);
                 console.log('Index', resData.data);
                 setIndexArr(resData.data.chapters);
+                setheadingData(resData.data)
             })
             .catch((err) => {
                 setLoader(false);
@@ -46,13 +42,16 @@ function SGPSGIndex() {
     }
     return (
         <div>
-            <HelmetWrapper
-                title={`Sri Gur Pratap Suraj Granth Chapter Index-: ਸ੍ਰੀ ਗੁਰ ਪ੍ਰਤਾਪ ਸੂਰਜ ਗਰੰਥ -: searchgurbani.com `}
-                description={`Sri Gur Pratap Suraj Granth Chapter Index`}
-                keywords="Sri ,Nanak ,Prakash. Granth, Gur, Pratap , Suraj, Santokh, "
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='inner-actions p-4' >
                 <div className='container'>
                     <h3 className='text-dark mb-3 text-center' >Sri Gur Pratap Suraj Granth - Section {volume_id} Chapter Index </h3>

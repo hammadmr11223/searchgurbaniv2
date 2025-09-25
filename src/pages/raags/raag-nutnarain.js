@@ -12,8 +12,7 @@ import { ApiHelper } from '@/helpers/ApiHelper';
 //import imgs from './assets/img/content/ggs_01.jpg'
 import introbannar from '@/assets/img/intro-bannar.webp';
 import Spinner from '@/components/Spinner';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function Nutnarain() {
     const [datas, setDatas] = useState([]);
@@ -21,14 +20,6 @@ function Nutnarain() {
     const [loader, setLoader] = useState(false);
     const [audioList, setAudioList] = useState("");
 
-
-    const [currentUrl, setCurrentUrl] = useState("");
-    
-      useEffect(() => {
-        if (typeof window !== "undefined") {
-          setCurrentUrl(window.location.href);
-        }
-      }, []);
 
     useEffect(() => {
         getData()
@@ -61,13 +52,16 @@ function Nutnarain() {
     }
     return (
         <div>
-            <HelmetWrapper
-                title={`Raag Nutnarain -: searchgurbani.com`}
-                description={`Learn about Gurbani Raag Nutnarain- searchgurbani.com`}
-                keywords="siri, devgandhari, jaitsri, bilaval, maru, sarang, majh, bihagara, todi, gond, tukhari, malar, gauri, vadahans, bairari, ramkali, kedara, kanara, asa, sorathi, tilang, nutnarain, bhairav, kalyan, gujri, dhanasri, suhi, maligaura, basant, prabhati, jaijaiwanti"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{datas?.title} </title>
+                          <meta name="description" content={datas?.description} />
+                          <meta name="keywords" content={datas?.keywords} />
+                          <meta property="og:title" content={datas?.title} />
+                          <meta property="og:description" content={datas?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

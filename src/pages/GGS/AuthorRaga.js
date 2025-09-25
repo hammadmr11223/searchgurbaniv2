@@ -7,10 +7,9 @@ import Axios from 'axios';
 import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import Spinner from '@/components/Spinner';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 //import imgs from './assets/img/content/ggs_01.jpg'
 
 function AuthorRaga() {
@@ -20,15 +19,7 @@ function AuthorRaga() {
     const [loader, setLoader] = useState(false);
     const [authorName, setAuthorName] = useState([]);
     const [authorArr, setAuthorArr] = useState([]);
-
-       const [currentUrl, setCurrentUrl] = useState("");
-    
-    
-          useEffect(() => {
-                 if (typeof window !== "undefined") {
-                   setCurrentUrl(window.location.href);
-                 }
-               }, []);
+const [headingData, setHeadindData] = useState([]);
 
     useEffect(() => {
         getAuthorRaga();
@@ -42,6 +33,7 @@ function AuthorRaga() {
                 setLoader(false);
                 console.log('Raga', resData);
                 setAuthorArr(resData.data.raags);
+                setHeadindData(resData.data)
             })
             .catch((err) => {
                 setLoader(false);
@@ -63,6 +55,16 @@ function AuthorRaga() {
                 image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
                 url={currentUrl}
             /> */}
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

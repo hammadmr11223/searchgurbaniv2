@@ -15,30 +15,27 @@ import appstore from '@/assets/icons/appstore.svg';
 import plastore from '@/assets/icons/platstore.svg';
 import poster from '@/assets/img/isg-poster-sm.jpg';
 import Modal from 'react-bootstrap/Modal';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Image from 'next/image';
+import Head from 'next/head';
 
 function SearchGurbaniDV() {
 
 
-      const [currentUrl, setCurrentUrl] = useState("");
-
-     useEffect(() => {
-        if (typeof window !== "undefined") {
-          setCurrentUrl(window.location.href);
-        }
-      }, []);
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Search Gurbani Desktop Version 2.5- the Gurbani Search Software`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+          
+              <Head>
+                          <title>{`Search Gurbani Desktop Version 2.5- the Gurbani Search Software`} </title>
+                          <meta name="description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta name="keywords" content="" />
+                          <meta property="og:title" content={`Search Gurbani Desktop Version 2.5- the Gurbani Search Software`} />
+                          <meta property="og:description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1 intro-bg'>
             <div className="container">
                 <div className="second-container intro-bkg">
@@ -61,7 +58,7 @@ function SearchGurbaniDV() {
                         </div>
                         <div className='col-lg-3 d-flex justify-content-end'>
                             <div className='app-thumb'>
-                                <img src={inerlogo} class="img-fluid web-dw-logo" alt="Responsive image" />
+                                <Image src={inerlogo} class="img-fluid web-dw-logo" alt="Responsive image" />
                             </div>
                         </div>
                         <div className='col-lg-12'>                            
@@ -89,30 +86,46 @@ function SearchGurbaniDV() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><img src={windows} class="dw-logos me-2" alt="Responsive image" />Windows (60 MB)</td>
+                                        <td><div className="d-flex align-items-center">
+                                              <Image src={windows} width={35} height={35} className="dw-logos me-2" alt="Windows" />
+                                              <span>Windows (60 MB)</span>
+                                            </div></td>
                                         <td> <Link href="https://www.data.searchgurbani.com/downloads/sgdv25/SGDV_windows_2_5_x86_jre.exe" target="_blank" className='dwnld-btn'><i class="bi bi-download"></i>Download</Link> </td>
                                     </tr>
                                     <tr>
-                                        <td><img src={windows} class="dw-logos me-2" alt="Responsive image" />Windows 64 bit (60 MB)</td>
+                                     <td><div className="d-flex align-items-center">
+                                              <Image src={windows} width={35} height={35} className="dw-logos me-2" alt="Windows" />
+                                              <span>Windows (60 MB)</span>
+                                            </div></td>
                                         <td> <Link href="https://www.data.searchgurbani.com/downloads/sgdv25/SGDV_windows_2_5_x64_jre.exe" target="_blank" className='dwnld-btn'><i class="bi bi-download"></i>Download</Link> </td>
                                     </tr>
                                     <tr>
-                                        <td><img src={mac} class="dw-logos me-2" alt="Responsive image" />Mac OSX Installer  (44 MB)</td>
+                                        <td><div className="d-flex align-items-center">
+                                              <Image src={mac} width={35} height={35} className="dw-logos me-2" alt="mac" />
+                                              <span>Mac OSX Installer (44 MB)</span>
+                                            </div></td>
                                         <td> <Link href="https://www.data.searchgurbani.com/downloads/sgdv25/Search_Gurbani.dmg" target="_blank" className='dwnld-btn'><i class="bi bi-download"></i>Download</Link> </td>
                                     </tr>
                                     <tr>
-                                        <td><img src={ubuntu} class="dw-logos me-2" alt="Responsive image" />Linux Installer  (44 MB)</td>
+                                        <td><div className="d-flex align-items-center">
+                                            <Image src={ubuntu} width={35} height={35} class="dw-logos me-2" alt="Responsive image" />
+                                        
+                                         <span>Linux Installer  (44 MB)</span>
+                                         </div>
+                                        </td>
                                         <td> <Link href="https://www.data.searchgurbani.com/downloads/sgdv25/SGDV_unix_2_5.sh" target="_blank" className='dwnld-btn'><i class="bi bi-download"></i>Download</Link> </td>
                                     </tr>
                                     <tr>
-                                        <td><img src={pdf} class="dw-logos me-2" alt="Responsive image" />SGDV v 2.5 Guide</td>
+                                        <td><div className="d-flex align-items-center"><Image src={pdf} width={35} height={35} class="dw-logos me-2" alt="Responsive image" />
+                                           <span>SGDV v 2.5 Guide</span>
+                                           </div></td>
                                         <td> <Link href="https://www.data.searchgurbani.com/downloads/sgdv25/SGDV2.5.pdf" target="_blank" className='dwnld-btn'><i class="bi bi-download"></i>Download</Link> </td>
                                     </tr>                                    
                                 </tbody>
                             </table>
                         </div>
                         <div className='col-lg-4 mb-3'>
-                            <img src={poster} class="poster" alt="Responsive image" />
+                            <Image src={poster} class="poster" alt="Responsive image" />
                         </div>
                         <div className='col-lg-12'>
                             <h4 className='p_s_head text-dark mb-3' >SGDV Requirements</h4>

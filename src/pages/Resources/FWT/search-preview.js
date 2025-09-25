@@ -14,10 +14,9 @@ import Table from 'react-bootstrap/Table';
 import VirtualKeyboard from '@/components/VirtualKeyboard';
 import charMap from '@/components/GurumukhiAscii';
 import { Color } from 'react-input-color';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
+import Head from 'next/head';
 
 const transliterateToGurumukhi = (input) => {
     return input
@@ -46,7 +45,7 @@ function FWTSearchView() {
     const [transliterated, setTransliterated] = useState('');
     const inputRef = useRef(null);
     const alphas = ['ੳ', 'ਅ', 'ੲ', 'ਸ', 'ਹ', 'ਕ', 'ਖ', 'ਗ', 'ਘ', 'ਙ', 'ਚ', 'ਛ', 'ਜ', 'ਝ', 'ਞ', 'ਟ', 'ਠ', 'ਡ', 'ਢ', 'ਣ', 'ਤ', 'ਥ', 'ਦ', 'ਧ', 'ਨ', 'ਪ', 'ਫ', 'ਬ', 'ਭ', 'ਮ', 'ਯ', 'ਰ', 'ਲ', 'ਵ', 'ੜ'];
-   const [currentUrl, setCurrentUrl] = useState("");
+  const [headingData, setheadingData] = useState();
 
     useEffect(() => {
         if(queryWord){
@@ -54,11 +53,7 @@ function FWTSearchView() {
             getSearchResult(queryWord,pageNo)
         }       
     }, [])
-      useEffect(() => {
-                           if (typeof window !== "undefined") {
-                             setCurrentUrl(window.location.href);
-                           }
-                         }, []);
+     
 
     const getSearchResult = async (word, page) => {
         setLoader(true)
@@ -68,6 +63,7 @@ function FWTSearchView() {
                 console.log('getSearch result', resData.data);
                 setSearchData(resData.data.occurrences)
                 setpageData(resData.data.search_results_info)
+                setheadingData(resData.data)
             })
             .catch((err) => {
                 setLoader(false)
@@ -96,13 +92,16 @@ function FWTSearchView() {
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`Faridkot Wala Teeka Search Preview -: ਫਰੀਦਕੋਟ ਵਾਲਾ ਟੀਕਾ -: searchgurbani.com`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords="Faridkot Wala, Teeka , Granth, Sahib, Nirmala, Guru Granth, Sikh, Gurbani"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='browse_by_letter p-5'>
                 <div className='container'>
                     <div className='row'>

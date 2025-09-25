@@ -6,25 +6,20 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function SGPSGVolume() {
    // const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
     const [indexArr, setIndexArr] = useState([]);
-     const [currentUrl, setCurrentUrl] = useState("");
+   
 
     useEffect(() => {
         getIndex();
     }, [])
 
-       useEffect(() => {
-                               if (typeof window !== "undefined") {
-                                 setCurrentUrl(window.location.href);
-                               }
-                             }, []);
+      
 
     const getIndex = async () => {
         setLoader(true)
@@ -41,13 +36,17 @@ function SGPSGVolume() {
     }
     return (
         <div>
-            <HelmetWrapper
-                title={`Sri Gur Pratap Suraj Granth Volume Index-: ਸ੍ਰੀ ਗੁਰ ਪ੍ਰਤਾਪ ਸੂਰਜ ਗਰੰਥ -: searchgurbani.com `}
-                description={`Sri Gur Pratap Suraj Granth Volume Index`}
-                keywords="Sri ,Nanak ,Prakash. Granth, Gur, Pratap , Suraj, Santokh, "
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+          
+               <Head>
+                          <title>{`Sri Gur Pratap Suraj Granth Volume Index-: ਸ੍ਰੀ ਗੁਰ ਪ੍ਰਤਾਪ ਸੂਰਜ ਗਰੰਥ -: searchgurbani.com `} </title>
+                          <meta name="description" content={`Sri Gur Pratap Suraj Granth Volume Index`} />
+                          <meta name="keywords" content="Sri ,Nanak ,Prakash. Granth, Gur, Pratap , Suraj, Santokh, " />
+                          <meta property="og:title" content={`Sri Gur Pratap Suraj Granth Volume Index-: ਸ੍ਰੀ ਗੁਰ ਪ੍ਰਤਾਪ ਸੂਰਜ ਗਰੰਥ -: searchgurbani.com `} />
+                          <meta property="og:description" content={`Sri Gur Pratap Suraj Granth Volume Index`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='inner-actions p-4' >
                 <div className='container'>
                     <h3 className='text-dark mb-3 text-center' >Sri Gur Pratap Suraj Granth - Volume Index</h3>

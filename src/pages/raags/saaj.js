@@ -12,21 +12,14 @@ import Spinner from '@/components/Spinner';
 import jathaImage from '@/assets/img/content/jatha.jpg';
 import tabalaImage from '@/assets/img/content/tabla.jpg';
 import raagiImage from '@/assets/img/content/raagi.gif';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
+
 
 function Muscical() {
     const [raag, setRaag] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
 
-    const [currentUrl, setCurrentUrl] = useState("");
-                                                    
-                                                      useEffect(() => {
-                                                        if (typeof window !== "undefined") {
-                                                          setCurrentUrl(window.location.href);
-                                                        }
-                                                      }, []);
 
     useEffect(() => {
         getRaags()
@@ -46,13 +39,16 @@ setLoader(false)
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Musical Instruments in Gurmat Sangeet -: searchgurbani.com`}
-                description={`Learn about Musical Instruments in Gurbani Sangeet- searchgurbani.com`}
-                keywords="saaj, tabla, veena, surinda, rabab, sarangi, flute, harmonium"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{raag?.title} </title>
+                          <meta name="description" content={raag?.description} />
+                          <meta name="keywords" content={raag?.keywords} />
+                          <meta property="og:title" content={raag?.title} />
+                          <meta property="og:description" content={raag?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

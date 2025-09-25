@@ -12,13 +12,13 @@ import Spinner from '@/components/Spinner';
 import jathaImage from '@/assets/img/content/jatha.jpg';
 import tabalaImage from '@/assets/img/content/tabla.jpg';
 import raagiImage from '@/assets/img/content/raagi.gif';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function AkIntroduction() {
     const [introData, setIntroData] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
+     const [headingData, setHeadindData] = useState([]);
     useEffect(() => {
         getIntro()
     }, [])
@@ -29,6 +29,7 @@ function AkIntroduction() {
                 console.log('INTRO', resData.data.data);
                 setIntroData(resData.data.data)
                 setLoader(false)
+                setHeadindData(resData.data.data)
 
             })
             .catch((err) => {
@@ -36,16 +37,24 @@ function AkIntroduction() {
             })
     }
     
+    
+
+
+
     return (
 
         <div>
-            {/* <HelmetWrapper
-                title={`Introduction to Amrit Kirtan Gutka-: ਅੰਮ੍ਰਿਤ ਕੀਰਤਨ ਗੁਟਕਾ -: searchgurbani.com`}
-                description={`Sikhism has a venerable tradition of Shabad-Kirtan (Chanting of Hymns in congregational gatherings. Down the centuries an uninterrupted flow of Kirtan has been going on the abodes of the Guru, i.e. Gurdwaras.`}
-                keywords="Gurbani Kirtan,amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Kabit, Bhai Gurdas, Vaaran, Varan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+           
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
         <section className='section-1 intro-bg'>
             {/* <div className=" justify-content-md-center align-items-center">
                 <div className='banner-img'>

@@ -7,8 +7,6 @@ import Axios from 'axios';
 import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import Spinner from '@/components/Spinner';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
 //import imgs from './assets/img/content/ggs_01.jpg'
 
@@ -33,13 +31,16 @@ function AuthorIndex() {
     }
     return (
         <div> 
-            {/* <HelmetWrapper
-                title={`Sri Guru Granth Sahib Ji Author Index-: searchgurbani.com`}
-                description="Sri Guru Granth Sahib Author Index :searchgurbani.com"
-                keywords="Gurmat Sangeet, Gurubani ,Kirtan,Amrit,Gurbani, Shabad, Keertan, English ,translation ,Phonetic, Transliteration, Hindi ,Sikh scriptures,sikhism, sikh, mahan kosh,hukamnama, dasam granth,granth,gurdas,guru,raag, vaaran,varan,kabit,nand lal,ang,gurdwara,hukumnama,bhagats;"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+           <Head>
+                          <title>{authorArr?.title} </title>
+                          <meta name="description" content={authorArr?.description} />
+                          <meta name="keywords" content={authorArr?.keywords} />
+                          <meta property="og:title" content={authorArr?.title} />
+                          <meta property="og:description" content={authorArr?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

@@ -173,12 +173,13 @@ export default function MahanKoshView() {
   const [pageNo, setPageNo] = useState(0);
   const [searchData, setSearchData] = useState([]);
   const [pageData, setPageData] = useState({});
-
+const [headingData, setheadingData] = useState();
   const getSearchResult = async (word, page) => {
     setLoader(true);
     try {
       const res = await Axios.get(`${API.getResourceResult}?keyword=${word}&alpha=alpha&page=${page}`);
       setSearchData(res.data.lines);
+      setheadingData(res.data)
       setPageData(res.data.search_results_info);
     } catch (err) {
       console.error(err);
@@ -199,13 +200,16 @@ export default function MahanKoshView() {
 
   return (
     <>
-      <Head>
-        <title>Gur Shabad Ratanakar Mahankosh Index: {word} - searchgurbani.com</title>
-        <meta name="description" content="A comprehensive web site on research and exploration..." />
-        <meta name="keywords" content="Hukum, Hukumnama, Darbar sahib, ..." />
-        <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
-        <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : ''} />
-      </Head>
+       <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
       <section className="browse_by_letter p-5">
         <div className="container">
           <h2 className="text-dark mb-4">Gur Shabad Ratanakar Mahankosh</h2>

@@ -8,9 +8,8 @@ import { ApiHelper } from '@/helpers/ApiHelper';
 import Spinner from '@/components/Spinner';
 import Switch from 'react-switch';
 import Accordion from 'react-bootstrap/Accordion';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function SggsShabadIndex() {
     const [loader, setLoader] = useState(false);
@@ -68,13 +67,16 @@ function SggsShabadIndex() {
 
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Sri Guru Granth Sahib Ji -: Gurbani Index-: searchgurbani.com`}
-                description={`Sri Guru Granth Sahib Shabad Index :searchgurbani.com`}
-                keywords="Gurmat Sangeet, Gurubani ,Kirtan,Amrit,Gurbani, Shabad, Keertan, English ,translation ,Phonetic, Transliteration, Hindi ,Sikh scriptures,sikhism, sikh, mahan kosh,hukamnama, dasam granth,granth,gurdas,guru,raag, vaaran,varan,kabit,nand lal,ang,gurdwara,hukumnama,bhagats;"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+         <Head>
+                          <title>{`Sri Guru Granth Sahib Ji -: Gurbani Index-: searchgurbani.com`} </title>
+                          <meta name="description" content={`Sri Guru Granth Sahib Shabad Index :searchgurbani.com`} />
+                          <meta name="keywords" content="Gurmat Sangeet, Gurubani ,Kirtan,Amrit,Gurbani, Shabad, Keertan, English ,translation ,Phonetic, Transliteration, Hindi ,Sikh scriptures,sikhism, sikh, mahan kosh,hukamnama, dasam granth,granth,gurdas,guru,raag, vaaran,varan,kabit,nand lal,ang,gurdwara,hukumnama,bhagats;" />
+                          <meta property="og:title" content={`Sri Guru Granth Sahib Ji -: Gurbani Index-: searchgurbani.com`} />
+                          <meta property="og:description" content={`Sri Guru Granth Sahib Shabad Index :searchgurbani.com`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4'>
                 <div className='container'>

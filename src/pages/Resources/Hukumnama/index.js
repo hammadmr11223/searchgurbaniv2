@@ -9,10 +9,9 @@ import { API } from '../../../config/api';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Helmet } from "react-helmet";
-import HelmetWrapper from '../../../components/CommonHelmet';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function SriDarbarSahib(props) {
     // const navigate = useNavigate();
@@ -69,6 +68,16 @@ function SriDarbarSahib(props) {
                 image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
                 url={window.location.href}
             /> */}
+             <Head>
+                          <title>{hukumnama?.title} </title>
+                          <meta name="description" content={hukumnama?.description} />
+                          <meta name="keywords" content={hukumnama?.keywords} />
+                          <meta property="og:title" content={hukumnama?.title} />
+                          <meta property="og:description" content={hukumnama?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section>
                 <div class=" justify-content-md-center align-items-center">
                     <div class="banner-img">
