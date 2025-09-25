@@ -11,11 +11,13 @@ import Spinner from '@/components/Spinner';
 import {Helmet} from "react-helmet";
 import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function VaarIndex() {
     const [loader, setLoader] = useState(false);
     const [vaarArr, setVaarArr] = useState([]);
     const [vaarIndexArr, setVaarIndexArr] = useState([]);
+    const [headingData, setHeadindData] = useState([]);
     const varrIndexOne = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
     const varrIndexTwo = ["21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"];
     useEffect(() => {
@@ -28,6 +30,7 @@ function VaarIndex() {
                 setLoader(false);
                 console.log('Index', resData.data);
                 setVaarIndexArr(resData.data);
+                setHeadindData(resData.data)
                 let chapters = [];
                 let p = 0;
                 let pauries = resData.data.pauries;
@@ -49,13 +52,17 @@ function VaarIndex() {
     }
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Bhai Gurdas Vaaran - Vaar Index - ਵਾਰਾਂ ਭਾਈ ਗੁਰਦਾਸ  -: searchgurbani.com`}
-                description={`Bhai Gurdas Vaaran - Vaar Index  :- searchgurbani.com`}
-                keywords="Gurbani Kirtan,amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Kabit, Bhai Gurdas, Vaaran, Varan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+          
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

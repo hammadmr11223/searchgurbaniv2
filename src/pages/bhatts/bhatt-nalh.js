@@ -15,20 +15,13 @@ import tabalaImage from '@/assets/img/content/tabla.jpg';
 import raagiImage from '@/assets/img/content/raagi.gif';
 import { Helmet } from 'react-helmet';
 import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function Nalh() {
     const [introData, setIntroData] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
-
-
-      const [currentUrl, setCurrentUrl] = useState("");
-                        
-                          useEffect(() => {
-                            if (typeof window !== "undefined") {
-                              setCurrentUrl(window.location.href);
-                            }
-                          }, []);
+const [headingData, setHeadindData] = useState([]);
 
     useEffect(() => {
         getIntro()
@@ -39,6 +32,7 @@ function Nalh() {
             .then((resData) => {
                 console.log('INTRO', resData.data.data);
                 setIntroData(resData.data.data)
+                setHeadindData(resData.data.data)
 setLoader(false)
             })
             .catch((err) => {
@@ -48,13 +42,16 @@ setLoader(false)
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Bhatt Nalh -: searchgurbani.com`}
-                description={`Life Story of Bhatt Nalh - searchgurbani.com`}
-                keywords="kalshar, salh, mathura, satta and balwand, jalap, bhalh, bal, bhai mardana ji, kirat, nal, harbans, bhika, gyand, baba sunder ji"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1  back-color'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

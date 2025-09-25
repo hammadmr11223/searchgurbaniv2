@@ -8,8 +8,7 @@ import Axios from 'axios';
 import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import Spinner from './Spinner';
-import { Helmet } from "react-helmet";
-import HelmetWrapper from './CommonHelmet';
+import Head from 'next/head';
 
 function AkIndex(props) {
     const [loader, setLoader] = useState(false);
@@ -60,19 +59,29 @@ function AkIndex(props) {
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`Amrit Kirtan Gutka Alphabetical Shabad index in ${props.language === "A" ? "English" :
+           
+             <Head>
+                          <title>{`Amrit Kirtan Gutka Alphabetical Shabad index in ${props.language === "A" ? "English" :
                     props.language === "क" ? "Hindi" :
                         props.language === "ਕ" ? "Punjabi" : "Unknown Language"
-                    } -: searchgurbani.com`}
-                description={`Explore Amrit Keertan Gutka Alphabetical Shabad Index in ${props.language === "A" ? "English" :
+                    } -: searchgurbani.com`} </title>
+                          <meta name="description" content={`Explore Amrit Keertan Gutka Alphabetical Shabad Index in ${props.language === "A" ? "English" :
                     props.language === "क" ? "Hindi" :
                         props.language === "ਕ" ? "Punjabi" : "Unknown Language"
-                    } at searchgurbani.com`}
-                keywords="Gurbani Kirtan,amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Kabit, Bhai Gurdas, Vaaran, Varan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+                    } at searchgurbani.com`} />
+                          <meta name="keywords" content="Gurbani Kirtan,amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Kabit, Bhai Gurdas, Vaaran, Varan" />
+                          <meta property="og:title" content={`Amrit Kirtan Gutka Alphabetical Shabad index in ${props.language === "A" ? "English" :
+                    props.language === "क" ? "Hindi" :
+                        props.language === "ਕ" ? "Punjabi" : "Unknown Language"
+                    } -: searchgurbani.com`} />
+                          <meta property="og:description" content={`Explore Amrit Keertan Gutka Alphabetical Shabad Index in ${props.language === "A" ? "English" :
+                    props.language === "क" ? "Hindi" :
+                        props.language === "ਕ" ? "Punjabi" : "Unknown Language"
+                    } at searchgurbani.com`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

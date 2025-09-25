@@ -11,8 +11,7 @@ import { API } from "@/config/api";
 import { ApiHelper } from "@/helpers/ApiHelper";
 import Spinner from "@/components/Spinner";
 import Form from "react-bootstrap/Form";
-import { Helmet } from "react-helmet";
-import HelmetWrapper from "./CommonHelmet";
+import Head from "next/head";
 
 const ResourcePage = (props) => {
   // const location = useLocation();
@@ -121,6 +120,16 @@ const ResourcePage = (props) => {
                 image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
                 url={window.location.href}
             /> */}
+             <Head>
+                          <title>{allData?.title} </title>
+                          <meta name="description" content={allData?.description} />
+                          <meta name="keywords" content={allData?.keywords} />
+                          <meta property="og:title" content={allData?.title} />
+                          <meta property="og:description" content={allData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
       {loader && <Spinner />}
       <section className="inner-actions p-4">
         <div className="container">

@@ -9,9 +9,8 @@ import Spinner from '@/components/Spinner';
 import { ApiHelper } from '@/helpers/ApiHelper';
 import { API } from '@/config/api';
 import Axios from 'axios';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function CompilationSGGS() {
     // const navigate = useNavigate();
@@ -25,14 +24,6 @@ function CompilationSGGS() {
     const [loader, setLoader] = useState(false);
     const [angNo, setAngNo] = useState("1");
 
-     const [currentUrl, setCurrentUrl] = useState("");
-
-
-      useEffect(() => {
-             if (typeof window !== "undefined") {
-               setCurrentUrl(window.location.href);
-             }
-           }, []);
 
     useEffect(() => {
         getCompilation(pageno)
@@ -84,13 +75,16 @@ function CompilationSGGS() {
     return (
         <div>
             {loader && <Spinner />}
-            <HelmetWrapper
-                title={`Compilation of Sri Guru Granth Sahib`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='inner-actions p-4' >
                 <div className='container'>
                     <div className='row'>
@@ -133,7 +127,7 @@ function CompilationSGGS() {
                             </div>*/}
                                 <div className='navigation-btn-audio'>
 
-                                    <button className='ang-btn' style={{ background: 'var(--current-color, var(--color-1))', color: '#fff' }} onClick={() => router.push(`/compilation/page/${1}`)}>Book Index</button>
+                                    <button className='ang-btn' style={{ background: 'var(--current-color, var(--color-1))', color: '#fff' }} onClick={() => router.push(`/Resources/Compilation/page/${1}`)}>Book Index</button>
                                     {headingData.page_no > 1 &&
                                         <>
                                             <button className='ang-btn' style={{ background: 'var(--current-color, var(--color-1))', color: '#fff' }} onClick={(e) => { e.preventDefault(); handleBegin() }}>Begin</button>

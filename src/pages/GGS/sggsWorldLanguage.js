@@ -20,6 +20,7 @@ import { Helmet } from "react-helmet";
 import HelmetWrapper from '@/components/CommonHelmet';
 import { usePathname } from "next/navigation";
 import Image from 'next/image';
+import Head from 'next/head';
 
 function SggsInWorldLanguage() {
     const [loader, setLoader] = useState(false);
@@ -240,13 +241,16 @@ function SggsInWorldLanguage() {
     };
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Sri Guru Granth Sahib Ji World -: Ang : ${angNo} -: ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ -: searchgurbani.com`}
-                description={`Explore,Share of World Ang  -${angNo} - of Sri Guru Granth Sahib ji at searchgurbani.com .`}
-                keywords="guru granth sahib, granth,  sikh scripture, sikhism + + +"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+           <Head>
+                          <title>{allData?.title} </title>
+                          <meta name="description" content={allData?.description} />
+                          <meta name="keywords" content={allData?.keywords} />
+                          <meta property="og:title" content={allData?.title} />
+                          <meta property="og:description" content={allData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

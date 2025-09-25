@@ -14,10 +14,9 @@ import Table from 'react-bootstrap/Table';
 import VirtualKeyboard from '@/components/VirtualKeyboard';
 import charMap from '@/components/GurumukhiAscii';
 import searchbannar from '@/assets/img/search-bannar.webp';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const transliterateToGurumukhi = (input) => {
     return input
@@ -36,14 +35,7 @@ function FWTSearch() {
     const [input, setInput] = useState('');
     const [transliterated, setTransliterated] = useState('');
     const inputRef = useRef(null);
-     const [currentUrl, setCurrentUrl] = useState("");
-        
-    
-          useEffect(() => {
-                     if (typeof window !== "undefined") {
-                       setCurrentUrl(window.location.href);
-                     }
-                   }, []);
+   const [headingData, setheadingData] = useState();
 
 
     const handleKeyDown = (event) => {
@@ -84,6 +76,7 @@ function FWTSearch() {
                 setLoader(false)
                 console.log('getSearch', resData.data);
                 setSearchData(resData.data)
+                setheadingData(resData.data)
             })
             .catch((err) => {
                 setLoader(false)
@@ -100,13 +93,16 @@ function FWTSearch() {
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`Faridkot Wala Teeka-: ਫਰੀਦਕੋਟ ਵਾਲਾ ਟੀਕਾ -: searchgurbani.com `}
-                description={`Faridkot Wala Teeka is classical exegesis of Sri Guru Granth Sahib in Braj Bhasha by a team of scholars of Nirmala Sect.`}
-                keywords="Faridkot Wala, Teeka , Granth, Sahib, Nirmala, Guru Granth, Sikh, Gurbani"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {/* <section className='section-1'>
                 <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

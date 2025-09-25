@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 const HelmetWrapper = ({ title, description, keywords, image, url }) => {
-  console.log("@@@@@@@@@@",url)
+  //console.log("@@@@@@@@@@",url)
   if (!title) {
     console.warn('HelmetWrapper: Missing title prop. Default title will be used.');
   }

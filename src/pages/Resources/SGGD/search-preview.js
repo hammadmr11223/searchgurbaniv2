@@ -18,6 +18,7 @@ import { Helmet } from 'react-helmet';
 import HelmetWrapper from '@/components/CommonHelmet';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const transliterateToGurumukhi = (input) => {
     return input
@@ -46,8 +47,7 @@ function SGGDSeachView() {
     const [transliterated, setTransliterated] = useState('');
     const inputRef = useRef(null);
     const alphas = ['ੳ', 'ਅ', 'ੲ', 'ਸ', 'ਹ', 'ਕ', 'ਖ', 'ਗ', 'ਘ', 'ਙ', 'ਚ', 'ਛ', 'ਜ', 'ਝ', 'ਞ', 'ਟ', 'ਠ', 'ਡ', 'ਢ', 'ਣ', 'ਤ', 'ਥ', 'ਦ', 'ਧ', 'ਨ', 'ਪ', 'ਫ', 'ਬ', 'ਭ', 'ਮ', 'ਯ', 'ਰ', 'ਲ', 'ਵ', 'ੜ'];
- const [currentUrl, setCurrentUrl] = useState("");
-
+ 
 
 
 
@@ -58,11 +58,7 @@ function SGGDSeachView() {
             getSearchResult(queryWord,pageNo)
         }       
     }, [])
-         useEffect(() => {
-                               if (typeof window !== "undefined") {
-                                 setCurrentUrl(window.location.href);
-                               }
-                             }, []);
+      
 
     const getSearchResult = async (word, page) => {
         setLoader(true)
@@ -100,13 +96,17 @@ function SGGDSeachView() {
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`Sri Guru Granth Sahib Darpan Search Preview -: ਸ੍ਰੀ ਗੁਰੂ ਗਰੰਥ ਸਾਹਿਬ ਦਰਪਣ  -: searchgurbani.com `}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords="Hukum, Hukumnama, Darbar sahib, Harmandir sahib, Amritsar"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           
+            <Head>
+                          <title>{`Sri Guru Granth Sahib Darpan Search Preview -: ਸ੍ਰੀ ਗੁਰੂ ਗਰੰਥ ਸਾਹਿਬ ਦਰਪਣ  -: searchgurbani.com `} </title>
+                          <meta name="description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta name="keywords" content="Hukum, Hukumnama, Darbar sahib, Harmandir sahib, Amritsar" />
+                          <meta property="og:title" content={`Sri Guru Granth Sahib Darpan Search Preview -: ਸ੍ਰੀ ਗੁਰੂ ਗਰੰਥ ਸਾਹਿਬ ਦਰਪਣ  -: searchgurbani.com `} />
+                          <meta property="og:description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='browse_by_letter p-5'>
                 <div className='container'>
                     <div className='row'>

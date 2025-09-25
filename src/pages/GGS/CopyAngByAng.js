@@ -24,6 +24,7 @@ import mail from '@/assets/img/mail.svg';
 import FontChange from '@/components/FontChange';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function ShabadLine() {
     // const location = useLocation();
@@ -210,6 +211,16 @@ function ShabadLine() {
     };
     return (
         <div>
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-shabad p-5'>
                 <div className='container'>
                     <h3 className='text-dark mb-3 text-center' >{headingData.meta_titleE}</h3>

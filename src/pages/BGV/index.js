@@ -12,12 +12,14 @@ import Spinner from '@/components/Spinner';
 import bgurdasImage from '@/assets/img/content/bgurdas.jpg';
 import {Helmet} from "react-helmet";
 import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 
 function BgvIntroduction() {
     const [introData, setIntroData] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
+    const [headingData, setHeadindData] = useState([]);
     useEffect(() => {
         getIntro()
     }, [])
@@ -27,6 +29,7 @@ function BgvIntroduction() {
             .then((resData) => {
                 console.log('INTRO', resData.data.data);
                 setIntroData(resData.data.data)
+                setHeadindData(resData.data.data)
 setLoader(false)
             })
             .catch((err) => {
@@ -36,13 +39,17 @@ setLoader(false)
     
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Introduction to Bhai Gurdas-: ਵਾਰਾਂ ਭਾਈ ਗੁਰਦਾਸ  -: searchgurbani.com`}
-                description={`Bhai Gurdas is considered the first interpreter of Gurbani. His writings are considered key to understanding the Sikh holy scriptures.`}
-                keywords="Gurbani Kirtan,amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Kabit, Bhai Gurdas, Vaaran, Varan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+          
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1 intro-bg'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

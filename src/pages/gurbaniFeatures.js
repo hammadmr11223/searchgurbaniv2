@@ -4,13 +4,16 @@ import React, { useEffect, useState } from 'react';
 // import '../assets/css/style.css';
 import bannar from '../assets/img/HomeWallPaper.svg';
 // import 'animate.css';
-import {Helmet} from "react-helmet";
+
+import Head from 'next/head';
 function GurbaniFeatures() {
     return (
         <div>
-            <Helmet>
-                <title>Search Gurbani : Gurbani Research website</title>
-            </Helmet>
+         
+             <Head>
+                          <title>Search Gurbani : Gurbani Research website</title>
+                     
+                        </Head>
             <section className='section-1'>                
 
                 <div className="second-container  wow fadeInUp animated  " >

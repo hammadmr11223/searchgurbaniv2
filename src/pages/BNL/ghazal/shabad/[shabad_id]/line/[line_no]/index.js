@@ -31,6 +31,7 @@ import { Helmet } from "react-helmet";
 import HelmetWrapper from '@/components/CommonHelmet';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function BnlShabadLine() {
    /*  const navigate = useNavigate();
@@ -580,6 +581,16 @@ pageTitle
 
     return (
         <div>
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='section-shabad p-5'>
                 <div className='container'>

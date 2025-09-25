@@ -26,12 +26,11 @@ import initialFormState from './defalutPref';
 import MouseOverDic from './MouseOverDic';
 import { formatTextForCopyBnl } from './TextCopyBnl';
 import { MultiSelect } from "react-multi-select-component";
-import {Helmet} from "react-helmet";
-import HelmetWrapper from './CommonHelmet';
 import { usePage } from './PageContext';
 /* import { useRouter } from 'next/router'; */
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const BnlPages = (props) => {
     // const location = useLocation();
@@ -628,13 +627,17 @@ const BnlPages = (props) => {
     };
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`${props.title} -: searchgurbani.com`}
-                description={`${props.title} - searchgurbani.com`}
-                keywords={`${props.title}`}
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+           
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

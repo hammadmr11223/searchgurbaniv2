@@ -16,9 +16,8 @@ import VirtualKeyboard from '../components/VirtualKeyboard';
 import Switch from 'react-switch';
 import DataTable from 'react-data-table-component';
 import Spinner from './Spinner';
-import { Helmet } from "react-helmet";
-import HelmetWrapper from './CommonHelmet';
 import ggsImg from '../assets/img/sg-ggs1.png'
+import Head from 'next/head';
 
 
 function AdvancedSearch(props) {
@@ -617,13 +616,17 @@ function AdvancedSearch(props) {
     }, [scripture, pageFrom, pageTo]); */
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`${props.title} -: searchgurbani.com`}
-                description={`${props.title} -: searchgurbani.com`}
-                keywords="Gurmat Sangeet, Gurubani ,Kirtan,Amrit,Gurbani, Shabad, Keertan, English ,translation ,Phonetic, Transliteration, Hindi ,Sikh scriptures,sikhism, sikh, mahan kosh,hukamnama, dasam granth,granth,gurdas,guru,raag, vaaran,varan,kabit,nand lal,ang,gurdwara,hukumnama,bhagats;"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+          
+             <Head>
+                          <title>{`${props?.title} -: searchgurbani.com`} </title>
+                          <meta name="description" content={`${props?.title} -: searchgurbani.com`} />
+                          <meta name="keywords" content="Gurmat Sangeet, Gurubani ,Kirtan,Amrit,Gurbani, Shabad, Keertan, English ,translation ,Phonetic, Transliteration, Hindi ,Sikh scriptures,sikhism, sikh, mahan kosh,hukamnama, dasam granth,granth,gurdas,guru,raag, vaaran,varan,kabit,nand lal,ang,gurdwara,hukumnama,bhagats;" />
+                          <meta property="og:title" content={`${props?.title} -: searchgurbani.com`} />
+                          <meta property="og:description" content={`${props?.title} -: searchgurbani.com`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <div>
                 <section className='section-1'>
 

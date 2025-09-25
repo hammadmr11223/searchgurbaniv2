@@ -16,7 +16,7 @@ import Table from 'react-bootstrap/Table';
 import VirtualKeyboard from '@/components/VirtualKeyboard';
 import charMap from '@/components/GurumukhiAscii';
 import { Color } from 'react-input-color';
-import { Helmet } from 'react-helmet';
+
 // import HelmetWrapper from './CommonHelmet';
 import { useSearchParams } from 'next/navigation';
 

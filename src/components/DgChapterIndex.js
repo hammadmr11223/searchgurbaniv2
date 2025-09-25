@@ -12,20 +12,14 @@ import Spinner from '../components/Spinner';
 import Switch from 'react-switch';
 import { Helmet } from "react-helmet";
 import HelmetWrapper from './CommonHelmet';
+import Head from 'next/head';
 
 function DgChapterIndex({ lang }) {
     const [loader, setLoader] = useState(false);
     const [parent, setParent] = useState([]);
     const [child, setChild] = useState([]);
     const [languageCheck, setLanguageCheck] = useState(false);
-
-      const [currentUrl, setCurrentUrl] = useState("");
-            
-              useEffect(() => {
-                if (typeof window !== "undefined") {
-                  setCurrentUrl(window.location.href);
-                }
-              }, []);
+const [headingData, setHeadindData] = useState([]);
 
     useEffect(() => {
         getChapter(lang);
@@ -36,6 +30,7 @@ function DgChapterIndex({ lang }) {
             .then((resData) => {
                 setLoader(false);
                 console.log('chapter', resData.data.chapters);
+                setHeadindData(resData.data)
                 const newParent = resData.data.chapters.filter(row => {
                     return row.parentID === 1369
                 })
@@ -67,13 +62,16 @@ function DgChapterIndex({ lang }) {
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Sri Dasam Granth Sahib Chapter Index -: ਸ੍ਰੀ ਦਸਮ ਗ੍ਰੰਥ ਸਾਹਿਬ -: searchgurbani.com`}
-                description={`Explore Sri Dasam Granth Sahib Chapter Index : ਸ੍ਰੀ ਦਸਮ ਗ੍ਰੰਥ ਸਾਹਿਬ :- searchgurbani.com`}
-                keywords="Gurbani Kirtan,Amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru granth, granth, kabit, Bhai Gurdas, Vaaran, Varan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

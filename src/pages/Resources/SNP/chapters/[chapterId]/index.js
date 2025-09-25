@@ -7,30 +7,26 @@ import Axios from 'axios';
 import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import Spinner from '@/components/Spinner';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function SNPrakashSectn() {
     // const navigate = useNavigate();
       const router = useRouter();
 //    const searchParams = useSearchParams();
     const [loader, setLoader] = useState(false);
-        const [currentUrl, setCurrentUrl] = useState("");
+    
     // const { chapterId } = useParams();
     // const chapterId = searchParams.get('chapterId');
      const { chapterId } = router.query;
     console.log('INDEX ID',chapterId)
     const [indexArr, setIndexArr] = useState([]);
+    const [headingData, setheadingData]= useState();
     useEffect(() => {
         getIndex();
     }, [])
-        useEffect(() => {
-                       if (typeof window !== "undefined") {
-                         setCurrentUrl(window.location.href);
-                       }
-                     }, []);
+     
 
     const getIndex = async () => {
         setLoader(true)
@@ -39,6 +35,7 @@ function SNPrakashSectn() {
                 setLoader(false);
                 console.log('Index', resData.data);
                 setIndexArr(resData.data.chapters);
+                setheadingData(resData.data)
             })
             .catch((err) => {
                 setLoader(false);
@@ -47,13 +44,17 @@ function SNPrakashSectn() {
     }
     return (
         <div>
-            <HelmetWrapper
-                title={`Sri Nanak Prakash Chapter Index-: ਸ੍ਰੀ ਨਾਨਕ ਪ੍ਰਕਾਸ਼ -: searchgurbani.com `}
-                description={`Sri Nanak Prakash Chapter Index`}
-                keywords="Sri ,Nanak ,Prakash. Granth, Gur, Pratap , Suraj, Santokh,"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+          
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

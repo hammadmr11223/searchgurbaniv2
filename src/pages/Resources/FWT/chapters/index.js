@@ -7,10 +7,9 @@ import Axios from 'axios';
 import { API } from "@/config/api";
 import { ApiHelper } from '@/helpers/ApiHelper';
 import Spinner from '@/components/Spinner';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function FWTIndex() {
    // const navigate = useNavigate();
@@ -20,14 +19,10 @@ function FWTIndex() {
          const {  volume_id } = router.query;
          console.log("volume_id", volume_id, router.query);
     const [indexArr, setIndexArr] = useState([]);
-      const [currentUrl, setCurrentUrl] = useState("");
-            
-        
-              useEffect(() => {
-                         if (typeof window !== "undefined") {
-                           setCurrentUrl(window.location.href);
-                         }
-                       }, []);
+    const [headingData, setheadingData] = useState();
+    
+     
+    
 
     useEffect(() => {
         getIndex();
@@ -39,6 +34,7 @@ function FWTIndex() {
                 setLoader(false);
                 console.log('Index', resData.data);
                 setIndexArr(resData.data.chapters);
+                setheadingData(resData.data)
             })
             .catch((err) => {
                 setLoader(false);
@@ -47,13 +43,16 @@ function FWTIndex() {
     }
     return (
         <div>
-            <HelmetWrapper
-                title={`Faridkot Wala Teeka Chapter Index -: ਫਰੀਦਕੋਟ ਵਾਲਾ ਟੀਕਾ -: searchgurbani.com `}
-                description={`Faridkot Wala Teeka is classical exegesis of Sri Guru Granth Sahib in Braj Bhasha by a team of scholars of Nirmala Sect.`}
-                keywords="Faridkot Wala, Teeka , Granth, Sahib, Nirmala, Guru Granth, Sikh, Gurbani"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

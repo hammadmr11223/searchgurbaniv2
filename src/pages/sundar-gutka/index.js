@@ -4,21 +4,14 @@ import React, { useEffect, useState, useRef } from "react";
 // import '../../assets/css/intro.css'
 import { API } from "@/config/api";
 import { ApiHelper } from "@/helpers/ApiHelper";
-import { Helmet } from "react-helmet";
-import HelmetWrapper from "@/components/CommonHelmet";
 import Link from "next/link";
+import Head from "next/head";
 
 function SundarGutka() {
   const [loader, setLoader] = useState(false);
   const [sgData, setSgData] = useState([]);
-
-  const [currentUrl, setCurrentUrl] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentUrl(window.location.href);
-    }
-  }, []);
+ const [headingData, setheadingData] = useState();
+ 
 
   useEffect(() => {
     getAngByAng("1");
@@ -30,6 +23,7 @@ function SundarGutka() {
       .then((resData) => {
         setLoader(false);
         console.log("Ang", resData.data);
+        setheadingData(resData.data)
         setSgData(resData.data.lines);
       })
       .catch((err) => {
@@ -40,13 +34,17 @@ function SundarGutka() {
   };
   return (
     <div>
-      <HelmetWrapper
-        title={`Sundar Gutka -: searchgurbani.com`}
-        description={`Explore, Learn, baanis  at  searchgurbani.com`}
-        keywords="Japji Sahib, Jaap Sahib, Tvai Prasadh Savaiye, Chaupai Sahib, Anand Sahib, Rehraas Sahib, Kirtan Sohila, Anand Sahib(Bhog), Laavan( Anand Karaj), Asa Ki Vaar, Sukhmani Sahib, Sidh Gosht, Ramkali Sadh, Dhakanee Oankaar, Baavan Akhree, Shabad Hazare, Baarah Maaha, Sukhmana sahib, Dukh Bhanjani Sahib, Salok Sehskritee, Gathaa, Phunhay M: 5, Chaubolay M:5, Salok Kabeer ji, Salok Farid ji, Savaiye M: 1, Savaiye M: 2, Savaiye M: 3, Savaiye M: 4, Savaiye M: 5, Salok M: 9, Akal Ustati, Bachitar Natak"
-        image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-        url={currentUrl}
-      />
+     
+       <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
       <section className="inner-actions p-4">
         <div className="container">
           <div className="second-container  wow fadeInUp animated  ">

@@ -16,9 +16,8 @@ import Table from 'react-bootstrap/Table';
 import VirtualKeyboard from '../components/VirtualKeyboard';
 import charMap from '../components/GurumukhiAscii';
 import { Color } from 'react-input-color';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from './CommonHelmet';
 import { useSearchParams } from 'next/navigation';
+import Head from 'next/head';
 
 const transliterateToGurumukhi = (input) => {
     return input
@@ -135,13 +134,17 @@ function SearchResultPreview() {
     };
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Sri Guru Granth Sahib Search Result   -: searchgurbani.com`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+        
+              <Head>
+                          <title>{`Sri Guru Granth Sahib Search Result   -: searchgurbani.com`} </title>
+                          <meta name="description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          
+                          <meta property="og:title" content={`Sri Guru Granth Sahib Search Result   -: searchgurbani.com`} />
+                          <meta property="og:description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='browse_by_letter p-5'>
                 <div className='container'>
                     <div className='row'>

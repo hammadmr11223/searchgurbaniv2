@@ -25,7 +25,6 @@ import whatsapp from '../assets/img/whatsapp.svg';
 import mail from '../assets/img/mail.svg';
 import FontChange from './FontChange';
 import initialFormState from './defalutPref';
-import HelmetWrapper from './CommonHelmet';
 
 const SharePage = (props) => {
     // const location = useLocation();
@@ -190,6 +189,16 @@ const SharePage = (props) => {
                 image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
                 url={window.location.href}
             /> */}
+             <Head>
+                          <title>{angData?.title} </title>
+                          <meta name="description" content={angData?.description} />
+                          <meta name="keywords" content={angData?.keywords} />
+                          <meta property="og:title" content={angData?.title} />
+                          <meta property="og:description" content={angData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

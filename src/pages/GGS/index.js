@@ -11,8 +11,7 @@ import introbannar from '@/assets/img/intro-bannar.webp';
 import Spinner from '@/components/Spinner';
 // import ggsImage from '../../assets/img/content/ggs_01.jpg';
 import ggsImage from '@/../../public/images/ggs_01.jpg';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function GgsIntroduction() {
     const [introData, setIntroData] = useState([]);
@@ -25,7 +24,7 @@ function GgsIntroduction() {
         setLoader(true)
         await Axios.get('https://backend.searchgurbani.com/api/meta?url=guru-granth-sahib/introduction')
             .then((resData) => {
-                console.log('INTRO', resData.data.data);
+                console.log('INTRO sasa', resData.data.data);
                 setIntroData(resData.data.data)
 setLoader(false)
             })
@@ -36,13 +35,16 @@ setLoader(false)
     
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Introduction to Sri Guru Granth Sahib Ji -: ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ -: searchgurbani.com`}
-                description={`The Guru Granth Sahib is a sacred scripture and is the Eternal Guru of the Sikhs. Because it is a scripture suitable of a universal religion, many world class philosophers and holy men consider it a unique treasure`}
-                keywords="Guru, Granth, Nanak, Angad, Arjan,sikh, Sikhism, Raag,ang,scripture,gurbani"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+            <Head>
+                          <title>{introData?.title} </title>
+                          <meta name="description" content={introData?.description} />
+                          <meta name="keywords" content={introData?.keywords} />
+                          <meta property="og:title" content={introData?.title} />
+                          <meta property="og:description" content={introData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1 intro-bg'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

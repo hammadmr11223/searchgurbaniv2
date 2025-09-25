@@ -106,6 +106,17 @@ function SGGKSearch(props) {
                 image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
                 url={currentUrl}
             />
+            <Head>
+                          <title>{`Sri Guru Granth Kosh - Dr Gurcharan Singh -: ਗੁਰੂ ਗ੍ਰੰਥ ਕੋਸ਼ -: searchgurbani.com`} </title>
+                          <meta name="description" content={`Sri Guru Granth Kosh by Dr Gurcharan Singh is a dictionary of Sikh Scriptures and books on Sikh Religion.`} />
+                          <meta name="keywords" content="Sri Guru ,Granth ,Kosh" />
+                          <meta property="og:title" content={`Sri Guru Granth Kosh - Dr Gurcharan Singh -: ਗੁਰੂ ਗ੍ਰੰਥ ਕੋਸ਼ -: searchgurbani.com`} />
+                          <meta property="og:description" content={`Sri Guru Granth Kosh by Dr Gurcharan Singh is a dictionary of Sikh Scriptures and books on Sikh Religion.`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
+
             {/* <section className='section-1'>
                 <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

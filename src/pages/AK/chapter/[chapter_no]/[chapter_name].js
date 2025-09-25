@@ -15,6 +15,7 @@ import {Helmet} from "react-helmet";
 import HelmetWrapper from '@/components/CommonHelmet';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Head from 'next/head';
 //import imgs from './assets/img/content/ggs_01.jpg'
 
 function ChapterName() {
@@ -27,6 +28,7 @@ function ChapterName() {
     const [loader, setLoader] = useState(false);
     const [indexArr, setIndexArr] = useState([]);
     const [chapterArr, setChapterArr] = useState([]);
+     const [headingData, setHeadindData] = useState([]);
 
     useEffect (() => {
         getIndex();
@@ -36,8 +38,9 @@ function ChapterName() {
         await ApiHelper.get(API.getChapterName + chapter_no + '/' + chapter_name)
             .then((resData) => {
                 setLoader(false);
-                console.log('Index', resData.data);
+                console.log('Index heaing', resData.data);
                 setChapterArr(resData.data)
+                 setHeadindData(resData.data)
                 setIndexArr(resData.data.shabads);
             })
             .catch((err) => {
@@ -47,13 +50,17 @@ function ChapterName() {
     }
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Amrit Kirtan Gutka Shabad index -: searchgurbani.com`}
-                description={`Explore Amrit Keertan Gutka Shabads Chapter Index (ਅਮ੍ਰਿਤ ਕੀਰਤਨ ਗੁਟਕਾ) at  searchgurbani.com`}
-                keywords="Gurbani Kirtan,amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru Granth, Granth, Kabit, Bhai Gurdas, Vaaran, Varan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+            
+              <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

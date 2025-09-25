@@ -846,13 +846,16 @@ const AngByAng = (props) => {
     };
     return (
         <div>
-            {/* <HelmetWrapper
-                title={`Sri Guru Granth Sahib Ji -: Ang : ${angNo} -: ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ -: searchgurbani.com`}
-                description={`Explore,Share and Listen to Audio of Ang  -${angNo} - of Sri Guru Granth Sahib ji at searchgurbani.com .`}
-                keywords="Gurmat Sangeet, Gurubani ,Kirtan,Amrit,Gurbani, Shabad, Keertan, English ,translation ,Phonetic, Transliteration, Hindi ,Sikh scriptures,sikhism, sikh, mahan kosh,hukamnama, dasam granth,granth,gurdas,guru,raag, vaaran,varan,kabit,nand lal,ang,gurdwara,hukumnama,bhagats;"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+            <Head>
+                          <title>{allData?.title} </title>
+                          <meta name="description" content={allData?.description} />
+                          <meta name="keywords" content={allData?.keywords} />
+                          <meta property="og:title" content={allData?.title} />
+                          <meta property="og:description" content={allData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

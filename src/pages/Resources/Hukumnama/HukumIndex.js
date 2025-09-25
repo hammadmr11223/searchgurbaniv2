@@ -13,6 +13,7 @@ import Switch from 'react-switch';
 import {Helmet} from "react-helmet";
 import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function HukumIndex() {
     const [loader, setLoader] = useState(false);
@@ -21,7 +22,7 @@ function HukumIndex() {
     const [languageCheck, setLanguageCheck] = useState(false);
     const [chapters, setChapters] = useState([]);
   const [parentChapters, setParentChapters] = useState([]);
-     const [currentUrl, setCurrentUrl] = useState("");
+   const [headingData, setheadingData] = useState();
 
     useEffect(() => {
         getChapter();
@@ -33,7 +34,7 @@ function HukumIndex() {
                 setLoader(false);
                 console.log('chapter', resData.data);
                 setChapters(resData.data.hukumnama_titles);                      
-                
+                setheadingData(resData.data)
             })
             .catch((err) => {
                 setLoader(false);
@@ -42,12 +43,6 @@ function HukumIndex() {
             });
     }
      
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentUrl(window.location.href);
-    }
-  }, []);
 
     useEffect(() => {
         if (chapters.length > 0) {
@@ -81,13 +76,16 @@ function HukumIndex() {
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Hukumnama-: searchgurbani.com`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords="Hukum, Hukumnama, Darbar sahib, Harmandir sahib, Amritsar"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='inner-actions p-4' >
                 <div className='container'>
                     <div className='row w-100'>

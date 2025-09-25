@@ -15,11 +15,10 @@ import Table from 'react-bootstrap/Table';
 import VirtualKeyboard from '@/components/VirtualKeyboard';
 import charMap from '@/components/GurumukhiAscii';
 import { Color } from 'react-input-color';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const transliterateToGurumukhi = (input) => {
     return input
@@ -53,8 +52,7 @@ console.log("queryWord", queryWord);
     const inputRef = useRef(null);
     const alphas = ['ਕ', 'ਖ', 'ਗ', 'ਘ', 'ਙ', 'ਚ', 'ਛ', 'ਜ', 'ਝ', 'ਞ', 'ਟ', 'ਠ', 'ਡ',
         'ਢ', 'ਣ', 'ਤ', 'ਥ', 'ਦ', 'ਧ', 'ਨ', 'ਪ', 'ਫ', 'ਬ', 'ਭ', 'ਮ', 'ਯ', 'ਰ', 'ਲ', 'ਵ', 'ਸ', 'ਹ', 'ਖ਼'];
-  const [currentUrl, setCurrentUrl] = useState("");
-
+ 
 
     useEffect(() => {
         if (queryWord) {
@@ -62,11 +60,7 @@ console.log("queryWord", queryWord);
             getSearchResult(queryWord, pageNo)
         }
     }, [])
-          useEffect(() => {
-                               if (typeof window !== "undefined") {
-                                 setCurrentUrl(window.location.href);
-                               }
-                             }, []);
+         
 
     const getSearchResult = async (word, page) => {
         setLoader(true)
@@ -107,13 +101,16 @@ console.log("queryWord", queryWord);
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`Maansarovar -: searchgurbani.com`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords="Hukum, Hukumnama, Darbar sahib, Harmandir sahib, Amritsar"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{`Maansarovar -: searchgurbani.com`} </title>
+                          <meta name="description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta name="keywords" content="Hukum, Hukumnama, Darbar sahib, Harmandir sahib, Amritsar" />
+                          <meta property="og:title" content={`Maansarovar -: searchgurbani.com`} />
+                          <meta property="og:description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
           {/*   <HelmetWrapper
                 title={`Maansarovar -: searchgurbani.com`}
                 description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}

@@ -31,6 +31,7 @@ import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/router';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function ShabadLine() {
     // const location = useLocation();
@@ -666,6 +667,16 @@ const [currentUrl, setCurrentUrl] = useState()
     };
     return (
         <div>
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='section-shabad p-5'>
                 {shabadE ?

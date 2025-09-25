@@ -12,21 +12,13 @@ import Spinner from '@/components/Spinner';
 import jathaImage from '@/assets/img/content/jatha.jpg';
 import tabalaImage from '@/assets/img/content/tabla.jpg';
 import raagiImage from '@/assets/img/content/raagi.gif';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
+import Head from 'next/head';
 
 function Timing() {
     const [raag, setRaag] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
 
-    const [currentUrl, setCurrentUrl] = useState("");
-                                                
-                                                  useEffect(() => {
-                                                    if (typeof window !== "undefined") {
-                                                      setCurrentUrl(window.location.href);
-                                                    }
-                                                  }, []);
 
     useEffect(() => {
         getRaags()
@@ -46,13 +38,16 @@ setLoader(false)
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Gurbani Raag Time -: searchgurbani.com`}
-                description={`Learn about Times  in Gurbani Raags - searchgurbani.com`}
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{raag?.title} </title>
+                          <meta name="description" content={raag?.description} />
+                          <meta name="keywords" content={raag?.keywords} />
+                          <meta property="og:title" content={raag?.title} />
+                          <meta property="og:description" content={raag?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <div className='container'>
                 <div className="second-container intro-bkg">
                     <div className="row ">

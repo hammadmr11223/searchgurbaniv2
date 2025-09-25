@@ -39,7 +39,7 @@ const MouseOverDic = ({ content, keyWord, mouse, punctation, lareevar,gurmukhiFo
                     data-tooltip-id={item.tooltip ? 'tooltip' : undefined}
                     data-tooltip-content={item.tooltip ? item.tooltip : undefined}
                 >
-                    <Link href={`/sggs-kosh/view`} state={{ Word: item.word }}style={{ cursor: item.tooltip ? 'pointer' : 'default' , color:item.tooltip ? '#7c1012' : 'black',
+                    <Link href={`/Resources/SGGSKhosh/SggskView`} state={{ Word: item.word }}style={{ cursor: item.tooltip ? 'pointer' : 'default' , color:item.tooltip ? '#7c1012' : 'black',
                         fontFamily: gurmukhiFont, fontSize: `${gurmukhiSize}px`, 
                      }}>{item.word}</Link>{' '}
                 </span>
@@ -47,6 +47,6 @@ const MouseOverDic = ({ content, keyWord, mouse, punctation, lareevar,gurmukhiFo
             <Tooltip id="tooltip" place="top" effect="solid" />
         </div>
     );
-};
+}; 
 
 export default MouseOverDic;

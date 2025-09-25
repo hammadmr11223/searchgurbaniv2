@@ -15,8 +15,7 @@ import appstore from '../assets/icons/appstore.svg';
 import plastore from '../assets/icons/platstore.svg';
 import poster from '../assets/img/isg-poster-sm.jpg';
 import Modal from 'react-bootstrap/Modal';
-import { Helmet } from "react-helmet";
-import HelmetWrapper from '../components/CommonHelmet';
+import Head from 'next/head';
 
 function PrivacyPolicy() {
     const [share, setShare] = useState(false);
@@ -26,24 +25,21 @@ function PrivacyPolicy() {
         handleShareClose();
 
     };
-      const [currentUrl, setCurrentUrl] = useState("");
-
-
-      useEffect(() => {
-             if (typeof window !== "undefined") {
-               setCurrentUrl(window.location.href);
-             }
-           }, []);
+    
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Privacy Policy-: searchgurbani.com`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           
+             <Head>
+                          <title>{`Privacy Policy-: searchgurbani.com`} </title>
+                          <meta name="description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                         
+                          <meta property="og:title" content={`Privacy Policy-: searchgurbani.com`} />
+                          <meta property="og:description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1 intro-bg'>
                 <div className="container">
                     <div className="second-container intro-bkg">

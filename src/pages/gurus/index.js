@@ -10,15 +10,14 @@ import { ApiHelper } from '@/helpers/ApiHelper';
 //import imgs from './assets/img/content/ggs_01.jpg'
 import introbannar from '@/assets/img/intro-bannar.webp';
 import Spinner from '@/components/Spinner';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function Sahiban() {
     const [datas, setDatas] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
-     const [currentUrl, setCurrentUrl] = useState("");
+    
 
     useEffect(() => {
         getData()
@@ -27,11 +26,7 @@ function Sahiban() {
     
             
         
-              useEffect(() => {
-                         if (typeof window !== "undefined") {
-                           setCurrentUrl(window.location.href);
-                         }
-                       }, []);
+           
     
 
     const getData = async () => {
@@ -49,13 +44,16 @@ setLoader(false)
     
     return (
         <div>
-            <HelmetWrapper
-                title={`The Sikh Gurus -: searchgurbani.com`}
-                description={`The soul of Guru Nanak passed on to nine successors, who elaborated on the first Guru's teachings to give form to this new religion. The final form was given by the tenth and last Guru, Gobind Singh,`}
-                keywords="Sikh, sikhism, guru, gobind singh,nanak, har gobind, tegh bahadur, arjan, angad, ramdas,ram das, har krishan,amar das"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{datas?.title} </title>
+                          <meta name="description" content={datas?.description} />
+                          <meta name="keywords" content={datas?.keywords} />
+                          <meta property="og:title" content={datas?.title} />
+                          <meta property="og:description" content={datas?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
               
                 <div className=" justify-content-md-center align-items-center">

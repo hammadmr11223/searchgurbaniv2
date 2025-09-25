@@ -12,24 +12,14 @@ import Spinner from '@/components/Spinner';
 import jathaImage from '@/assets/img/content/jatha.jpg';
 import tabalaImage from '@/assets/img/content/tabla.jpg';
 import raagiImage from '@/assets/img/content/raagi.gif';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function GurbaniRaags() {
     const [raag, setRaag] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
 
-
-
-      const [currentUrl, setCurrentUrl] = useState("");
-                                    
-                                      useEffect(() => {
-                                        if (typeof window !== "undefined") {
-                                          setCurrentUrl(window.location.href);
-                                        }
-                                      }, []);
     useEffect(() => {
         getRaags()
     }, [])
@@ -48,13 +38,16 @@ setLoader(false)
     
     return (
         <div>
-            <HelmetWrapper
-                title={`Gurbani Raags -: searchgurbani.com`}
-                description={`Learn about Gurbani Raags- searchgurbani.com`}
-                keywords="siri, devgandhari, jaitsri, bilaval, maru, sarang, majh, bihagara, todi, gond, tukhari, malar, gauri, vadahans, bairari, ramkali, kedara, kanara, asa, sorathi, tilang, nutnarain, bhairav, kalyan, gujri, dhanasri, suhi, maligaura, basant, prabhati, jaijaiwanti"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           <Head>
+                          <title>{raag?.title} </title>
+                          <meta name="description" content={raag?.description} />
+                          <meta name="keywords" content={raag?.keywords} />
+                          <meta property="og:title" content={raag?.title} />
+                          <meta property="og:description" content={raag?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
             <div className="container">
                 <div className="second-container intro-bkg">

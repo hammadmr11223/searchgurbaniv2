@@ -17,19 +17,13 @@ import namdev1 from '@/assets/img/content/namdev1.jpg';
 import { Helmet } from 'react-helmet';
 import HelmetWrapper from '@/components/CommonHelmet';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function Namdev() {
     const [datas, setDatas] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
-
-     const [currentUrl, setCurrentUrl] = useState("");
-        
-          useEffect(() => {
-            if (typeof window !== "undefined") {
-              setCurrentUrl(window.location.href);
-            }
-          }, []);
+const [headingData, setHeadindData] = useState([]);
 
     useEffect(() => {
         getData()
@@ -40,6 +34,7 @@ function Namdev() {
             .then((resData) => {
                 console.log('INTRO', resData.data.data);
                 setDatas(resData.data.data)
+                setHeadindData(resData.data.data)
 setLoader(false)
             })
             .catch((err) => {
@@ -49,13 +44,16 @@ setLoader(false)
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Bhagat Namdev Ji -: searchgurbani.com`}
-                description={`Life Story of Bhagat Namdev Ji  at  searchgurbani.com`}
-                keywords="sheikh farid , kabir , ravidas , beni , namdev , sadhana , bhikhan , parmanand , sain , dhanna , pipa , surdas , jaidev , ramanand , trilochan"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

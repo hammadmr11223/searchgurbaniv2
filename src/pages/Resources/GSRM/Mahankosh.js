@@ -14,9 +14,8 @@ import Table from 'react-bootstrap/Table';
 import VirtualKeyboard from '@/components/VirtualKeyboard';
 import charMap from '@/components/GurumukhiAscii';
 import searchbannar from '@/assets/img/search-bannar.webp';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import { useRouter } from 'next/navigation';
+import Head from 'next/head';
 
 const transliterateToGurumukhi = (input) => {
     return input
@@ -35,15 +34,11 @@ function Mahankosh() {
     const [englishInput, setEnglishInput] = useState('');
     const [input, setInput] = useState('');
     const [transliterated, setTransliterated] = useState('');
-     const [currentUrl, setCurrentUrl] = useState("");
+    
     const inputRef = useRef(null);
     const alphas = ['ੳ', 'ਅ', 'ੲ', 'ਸ', 'ਹ', 'ਕ', 'ਖ', 'ਗ', 'ਘ', 'ਙ', 'ਚ', 'ਛ', 'ਜ', 'ਝ', 'ਞ', 'ਟ', 'ਠ', 'ਡ', 'ਢ', 'ਣ', 'ਤ', 'ਥ', 'ਦ', 'ਧ', 'ਨ', 'ਪ', 'ਫ', 'ਬ', 'ਭ', 'ਮ', 'ਯ', 'ਰ', 'ਲ', 'ਵ', 'ੜ'];
 
-     useEffect(() => {
-        if (typeof window !== "undefined") {
-          setCurrentUrl(window.location.href);
-        }
-      }, []);
+     
 
     const handleKeyDown = (event) => {
         const char = event.key;
@@ -102,13 +97,16 @@ function Mahankosh() {
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`Gur Shabad Ratanakar Mahankosh by Kahan Singh Nabha -: searchgurbani.com`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords="Hukum, Hukumnama, Darbar sahib, Harmandir sahib, Amritsar"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{searchData?.title} </title>
+                          <meta name="description" content={searchData?.description} />
+                          <meta name="keywords" content={searchData?.keywords} />
+                          <meta property="og:title" content={searchData?.title} />
+                          <meta property="og:description" content={searchData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {/* <section className='section-1'>
                 <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

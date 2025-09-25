@@ -1,34 +1,15 @@
 import React, { useEffect, useState } from 'react';
-// import { useNavigate, useOutletContext } from "react-router";
-// import { Link, useLocation } from "react-router-dom";
-// import '../../../assets/css/dashboard.css';
-// import '../../../assets/css/intro.css';
-// import '../../../assets/css/kalshar.css';
 import Axios from 'axios';
-import { API } from "@/config/api";
-import { ApiHelper } from '@/helpers/ApiHelper';
-//import imgs from './assets/img/content/ggs_01.jpg'
-import introbannar from '@/assets/img/intro-bannar.webp';
+
 import Spinner from '@/components/Spinner';
-import jathaImage from '@/assets/img/content/jatha.jpg';
-import tabalaImage from '@/assets/img/content/tabla.jpg';
-import raagiImage from '@/assets/img/content/raagi.gif';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
+
+import Head from 'next/head';
 
 function Kirat() {
     const [introData, setIntroData] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
-
-
-    const [currentUrl, setCurrentUrl] = useState("");
-                
-                  useEffect(() => {
-                    if (typeof window !== "undefined") {
-                      setCurrentUrl(window.location.href);
-                    }
-                  }, []);
+const [headingData, setHeadindData] = useState([]);
     useEffect(() => {
         getIntro()
     }, [])
@@ -38,6 +19,7 @@ function Kirat() {
             .then((resData) => {
                 console.log('INTRO', resData.data.data);
                 setIntroData(resData.data.data)
+                setHeadindData(resData.data.data)
 setLoader(false)
             })
             .catch((err) => {
@@ -47,13 +29,16 @@ setLoader(false)
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Bhatt Kirat -: searchgurbani.com`}
-                description={`Life Story of Bhatt Kirat - searchgurbani.com`}
-                keywords="kalshar, salh, mathura, satta and balwand, jalap, bhalh, bal, bhai mardana ji, kirat, nal, harbans, bhika, gyand, baba sunder ji"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1  back-color'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

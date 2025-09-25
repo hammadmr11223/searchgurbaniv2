@@ -15,22 +15,14 @@ import Spinner from '@/components/Spinner';
 import guru4 from '@/assets/img/content/guru4.jpg';
 import gram1 from '@/assets/img/content/gram1.jpg';
 import gram2 from '@/assets/img/content/gram2.jpg';
-import { Helmet } from 'react-helmet';
-import HelmetWrapper from '@/components/CommonHelmet';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function GuruRamDas() {
     const [datas, setDatas] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
 
-      const [currentUrl, setCurrentUrl] = useState("");
-                                    
-                                          useEffect(() => {
-                                                                 if (typeof window !== "undefined") {
-                                                                   setCurrentUrl(window.location.href);
-                                                                 }
-                                                               }, []);
 
     useEffect(() => {
         getData()
@@ -50,13 +42,16 @@ setLoader(false)
     
     return (
         <div>
-            <HelmetWrapper
-                title={`Guru Ram Das Ji -: searchgurbani.com`}
-                description={`Learn about life story of Guru Ram Das ji - searchgurbani.com`}
-                keywords="Sikh, sikhism, guru, gobind singh,nanak, har gobind, tegh bahadur, arjan, angad, ramdas,ram das, har krishan,amar das"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+             <Head>
+                          <title>{datas?.title} </title>
+                          <meta name="description" content={datas?.description} />
+                          <meta name="keywords" content={datas?.keywords} />
+                          <meta property="og:title" content={datas?.title} />
+                          <meta property="og:description" content={datas?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
                 <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

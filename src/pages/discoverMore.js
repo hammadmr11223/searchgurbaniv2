@@ -4,28 +4,24 @@ import React, { useEffect, useState } from 'react';
 // import '../assets/css/style.css';
 import bannar from '../assets/img/HomeWallPaper.svg';
 // import 'animate.css';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from '../components/CommonHelmet';
 import Image from 'next/image';
+import Head from 'next/head';
 function DiscoverMore() {
-      const [currentUrl, setCurrentUrl] = useState("");
-    
-    
-          useEffect(() => {
-                 if (typeof window !== "undefined") {
-                   setCurrentUrl(window.location.href);
-                 }
-               }, []);
+
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Search Gurbani : Gurbani Research website`}
-                description={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+           
+             <Head>
+                          <title>{`Search Gurbani : Gurbani Research website`} </title>
+                          <meta name="description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`} />
+                         
+                          <meta property="og:title" content={`Search Gurbani : Gurbani Research website`} />
+                          <meta property="og:description" content={`A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar`}/>
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
                 <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

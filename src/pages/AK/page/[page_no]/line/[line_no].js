@@ -31,6 +31,7 @@ import { usePage } from '@/components/PageContext';
 import { useRouter } from 'next/router';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const PageByPage = (props) => {
     // const location = useLocation();
@@ -71,6 +72,7 @@ const PageByPage = (props) => {
     const [angNo, setAngNo] = useState('65');
     const [angData, setAngData] = useState([]);
     const [allData, setAllData] = useState([]);
+    const [headingData, setHeadindData] = useState([]);
     const [pref, setPref] = useState(initialFormState);
     const [lineNo, setLineNo] = useState("");
     const [isAttrib, setIsAttrib] = useState(true);
@@ -186,8 +188,10 @@ const PageByPage = (props) => {
             .then((resData) => {
                 setLoader(false);
                 console.log('Ang', resData.data.lines);
+                  console.log('resData.data.', resData.data);
                 setAngData(resData.data.lines)
                 setAllData(resData.data)
+                setHeadindData(resData.data)
                 setCurrentPage(resData.data.current_page);
                 window.scrollTo(0, 0);
             })
@@ -492,6 +496,16 @@ const PageByPage = (props) => {
                 image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
                 url={window.location.href}
             /> */}
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>

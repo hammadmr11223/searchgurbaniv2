@@ -6,21 +6,24 @@ import React, { useState } from "react";
 // import '../assets/css/feedbck.css';
 import searchbannar from '../assets/img/search-bannar.svg';
 import Form from 'react-bootstrap/Form';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from "../components/CommonHelmet";
 import Image from "next/image";
+import Head from "next/head";
 
 const Feedback = () => {
-   
-    return (
+
+    return ( 
         <div >
-            {/* <HelmetWrapper
-                title={`Feedback Form : searchgurbani.com`}
-                description="A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar"
-                keywords="Gurbaanee Keertan,Gurmat Sangeet, Gurbani Kirtan,Amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru granth, granth, kabit, Bhai Gurdas, Vaaran, Varan, Mahankosh, Kosh, Hukumnama, Baanis, Japji, jaap, Sukhmani, Ardaas"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={window.location.href}
-            /> */}
+          
+             <Head>
+                          <title>{`Feedback Form : searchgurbani.com`} </title>
+                          <meta name="description" content="A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar" />
+                          <meta name="keywords" content="Gurbaanee Keertan,Gurmat Sangeet, Gurbani Kirtan,Amrit Keertan, Gurbani, Shabad Keertan,  Dasam Granth, Guru granth, granth, kabit, Bhai Gurdas, Vaaran, Varan, Mahankosh, Kosh, Hukumnama, Baanis, Japji, jaap, Sukhmani, Ardaas" />
+                          <meta property="og:title" content={`Feedback Form : searchgurbani.com`} />
+                          <meta property="og:description" content="A comprehensive web site on research and  exploration of Sri Guru Granth Sahib, Amrit Keertan Gutka, Bhai Gurdas Vaaran, Kabit Bhai Gurdaas ,Sri Dasam Granth Sahib, exegesis , Gurbani, Gurbanee vichaar" />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
                <section className='section-1'>
                 <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>
@@ -30,8 +33,8 @@ const Feedback = () => {
                 <div className="fouth-container common-padding">
                         <div className="container align-items-center d-flex justify-content-center">
                             <div className="row w-60 search-main-grd">
-                                <div className="col-12">
-                                    <h1 className="main-heading">Send us your valuable feedback</h1>
+                                <div className="col-12" >
+                                    <h1 className="main-heading-Feedback">Send us your valuable feedback</h1>
                                 </div>                        
                                 <div className="filter">
                                     <div className="main-filters">
@@ -59,7 +62,7 @@ const Feedback = () => {
                                         </div>
                                         <div className="col-lg-12">
                                         <div className="">
-                                            <button className="btn btn-outline-secondary sub-feed-bttn" type="button">
+                                            <button className="btn btn-outline-secondary sub-feed-bttn1" type="button">
                                            Submit
                                             </button>
                                         </div>

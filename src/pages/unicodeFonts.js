@@ -13,22 +13,14 @@ import Spinner from '../components/Spinner';
 import jathaImage from '../assets/img/content/jatha.jpg';
 import tabalaImage from '../assets/img/content/tabla.jpg';
 import raagiImage from '../assets/img/content/raagi.gif';
-import { Helmet } from "react-helmet";
-import HelmetWrapper from '../components/CommonHelmet';
+import Head from 'next/head';
 
 function Unicode() {
     const [datas, setDatas] = useState([]);
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false);
 
-       const [currentUrl, setCurrentUrl] = useState("");
-    
-    
-          useEffect(() => {
-                 if (typeof window !== "undefined") {
-                   setCurrentUrl(window.location.href);
-                 }
-               }, []);
+       
     useEffect(() => {
         getUnicode()
     }, [])
@@ -46,13 +38,17 @@ function Unicode() {
 
     return (
         <div>
-            <HelmetWrapper
-                title={`Search Gurbani Unicode Fonts`}
-                description="Learn about Unicode Fonts"
-                keywords=""
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+         
+             <Head>
+                          <title>{`Search Gurbani Unicode Fonts`} </title>
+                          <meta name="description" content="Learn about Unicode Fonts" />
+                        
+                          <meta property="og:title" content={`Search Gurbani Unicode Fonts`} />
+                          <meta property="og:description" content="Learn about Unicode Fonts" />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             <section className='section-1'>
                 {/* <div className=" justify-content-md-center align-items-center">
                     <div className='banner-img'>

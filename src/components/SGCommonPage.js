@@ -23,9 +23,8 @@ import whatsapp from '@/assets/img/whatsapp.svg';
 import mail from '@/assets/img/mail.svg';
 import FontChange from '@/components/FontChange';
 // import AngByAng from '@/views/GGS/AngByAng';
-import {Helmet} from "react-helmet";
-import HelmetWrapper from './CommonHelmet';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const sgFormState = {  
     showEnglish: false,
@@ -75,13 +74,7 @@ const SGCommonPage = (props) => {
     const [hindiColor, setHindiColor] = useState('rgb(136, 8, 8)');
     const [englishColor, setEnglishColor] = useState('#366732');
     const [pref, setPref] = useState(sgFormState);
-    const [currentUrl, setCurrentUrl] = useState("");
-    
-      useEffect(() => {
-        if (typeof window !== "undefined") {
-          setCurrentUrl(window.location.href);
-        }
-      }, []);
+ 
 
     useEffect(() => {
         if (props) {
@@ -187,13 +180,16 @@ const SGCommonPage = (props) => {
     };
     return (
         <div>
-            <HelmetWrapper
-                title={`${props.title}: Page: ${angNo} -: searchgurbani.com`}
-                description={`Explore, Learn, Relish ${props.title} with audio at  searchgurbani.com`}
-                keywords="Japji Sahib, Jaap Sahib, Tvai Prasadh Savaiye, Chaupai Sahib, Anand Sahib, Rehraas Sahib, Kirtan Sohila, Anand Sahib(Bhog), Laavan( Anand Karaj), Asa Ki Vaar, Sukhmani Sahib, Sidh Gosht, Ramkali Sadh, Dhakanee Oankaar, Baavan Akhree, Shabad Hazare, Baarah Maaha, Sukhmana sahib, Dukh Bhanjani Sahib, Salok Sehskritee, Gathaa, Phunhay M: 5, Chaubolay M:5, Salok Kabeer ji, Salok Farid ji, Savaiye M: 1, Savaiye M: 2, Savaiye M: 3, Savaiye M: 4, Savaiye M: 5, Salok M: 9, Akal Ustati, Bachitar Natak"
-                image="https://www.searchgurbani.com/assets/img/sg-ggs1.png"
-                url={currentUrl}
-            />
+            <Head>
+                          <title>{headingData?.title} </title>
+                          <meta name="description" content={headingData?.description} />
+                          <meta name="keywords" content={headingData?.keywords} />
+                          <meta property="og:title" content={headingData?.title} />
+                          <meta property="og:description" content={headingData?.description} />
+                          <meta property="og:image" content="https://www.searchgurbani.com/assets/img/sg-ggs1.png" />
+                         
+                         
+                        </Head>
             {loader && <Spinner />}
             <section className='inner-actions p-4' >
                 <div className='container'>
