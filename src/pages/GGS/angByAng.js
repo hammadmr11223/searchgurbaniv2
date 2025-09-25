@@ -35,6 +35,7 @@ import { usePage } from '@/components/PageContext';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const AngByAng = (props) => {
     // const location = useLocation();

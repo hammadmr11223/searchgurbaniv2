@@ -32,6 +32,7 @@ import HelmetWrapper from '@/components/CommonHelmet';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function AkShabadLine() {
     // const location = useLocation();
