@@ -514,26 +514,240 @@ function Header(props) {
               <Offcanvas.Title>Menu</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              {/* <ul className='d-flex sub-menu-wrapper' >
+              <ul className='d-flex sub-menu-wrapper' >
                 <li>
                   <div className='d-flex side-reg'>
                     <button className='register' onClick={handleRegistershow}>Register</button>
                     <button className='login' onClick={handleLoginShow}>Login</button>
                   </div>
                 </li>
-                <li> <LinkContainer to="/"><Nav.Link onClick={handleClose}>Home</Nav.Link></LinkContainer> </li>
-                <li> <LinkContainer to="/gurbani-search"><Nav.Link onClick={handleClose}>Gurbani Search</Nav.Link></LinkContainer> </li>
+               <li>
+              <Nav.Link as={Link} href="/" onClick={handleClose}>
+                Home
+              </Nav.Link>
+            </li>
+            <li>
+              <Nav.Link as={Link} href="/gurbaniSearch" onClick={handleClose}>
+                Gurbani Search
+              </Nav.Link>
+            </li>
                 <li>
-                  <NavDropdown title="Guru Granth Sahib" id="navbarScrollingDropdown" >
-                    <LinkContainer to="/guru-granth-sahib/introduction"><NavDropdown.Item onClick={handleClose} >Introduction</NavDropdown.Item></LinkContainer>
-                    <LinkContainer to="/guru-granth-sahib/ang-by-ang"><NavDropdown.Item onClick={handleClose}>Ang by Ang</NavDropdown.Item></LinkContainer>
-                    <LinkContainer to="/guru-granth-sahib/index/chapter"><NavDropdown.Item onClick={handleClose}>SGGS Shabad Index</NavDropdown.Item></LinkContainer>
-                    <LinkContainer to="/guru-granth-sahib/index/author"><NavDropdown.Item onClick={handleClose}>Author Index</NavDropdown.Item></LinkContainer>
-                    <LinkContainer to="/guru-granth-sahib/sggs-world-language"><NavDropdown.Item onClick={handleClose}>SGGS in World Languages</NavDropdown.Item></LinkContainer>
-                    <LinkContainer to="/guru-granth-sahib/search"><NavDropdown.Item onClick={handleClose}>Search Guru Granth Sahib</NavDropdown.Item></LinkContainer>
-                  </NavDropdown>
+                 {/*  <NavDropdown title="Guru Granth Sahib" id="navbarScrollingDropdown" >
+                    <Nav.Link as={Link} href="/GGS"><NavDropdown.Item onClick={handleClose} >Introduction111</NavDropdown.Item></Nav.Link> */}
+                  
+                  <NavDropdown title="Guru Granth Sahib" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className={pathname === '/GGS' ? 'active' : ''}  href="/GGS" onClick={handleClose}>
+                  Introduction
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/angByAng' ? 'active' : ''}  href="/GGS/angByAng" onClick={handleClose}>
+                  Ang by Ang
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/sggsIndex' ? 'active' : ''}  href="/GGS/sggsIndex" onClick={handleClose}>
+                  SGGS Shabad Index
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/authorIndex' ? 'active' : ''}  href="/GGS/authorIndex" onClick={handleClose}>
+                  Author Index
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/sggsWorldLanguage' ? 'active' : ''}  href="/GGS/sggsWorldLanguage" onClick={handleClose}>
+                  SGGS in World Languages
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/GGS/ggsAdvanceSearch' ? 'active' : ''}  href="/GGS/ggsAdvanceSearch" onClick={handleClose}>
+                  Search Guru Granth Sahib
+                </NavDropdown.Item>
+              </NavDropdown>
                 </li>
                 <li>
+                 <NavDropdown title="Amrit Keertan" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className={pathname === '/AK' ? 'active' : ''} href="/AK" onClick={handleClose}>
+                  Introduction
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/AK/pageByPage' ? 'active' : ''} href="/AK/pageByPage" onClick={handleClose}>
+                  Page by Page
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/AK/chapterIndex' ? 'active' : ''} href="/AK/chapterIndex" onClick={handleClose}>
+                  Chapter Index
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/AK/englishIndex' ? 'active' : ''} href="/AK/englishIndex" onClick={handleClose}>
+                  English Index
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/AK/punjabiIndex' ? 'active' : ''} href="/AK/punjabiIndex" onClick={handleClose}>
+                  Punjabi Index
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/AK/hindiIndex' ? 'active' : ''} href="/AK/hindiIndex" onClick={handleClose}>
+                  Hindi Index
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/AK/akSearch' ? 'active' : ''} href="/AK/akSearch" onClick={handleClose}>
+                  Search Amrit Keertan
+                </NavDropdown.Item>
+              </NavDropdown>
+              </li>
+               <li>
+              <NavDropdown title="Bhai Gurdas Vaaran" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className={pathname === '/BGV' ? 'active' : ''} href="/BGV" onClick={handleClose}>
+                  Introduction
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BGV/pauriByPauri' ? 'active' : ''} href="/BGV/pauriByPauri" onClick={handleClose}>
+                  Pauri by Pauri
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BGV/vaarIndex' ? 'active' : ''} href="/BGV/vaarIndex" onClick={handleClose}>
+                  Vaar Index
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BGV/BgvSearch' ? 'active' : ''} href="/BGV/BgvSearch" onClick={handleClose}>
+                  Search Gurdas Vaaran
+                </NavDropdown.Item>
+              </NavDropdown>
+            </li>
+             {/* Dasam Granth Sahib DropDown  */}
+            <li>
+              <NavDropdown title="Dasam Granth Sahib" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className={pathname === '/DGS' ? 'active' : ''} href="/DGS" onClick={handleClose}>
+                  Introduction
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgPageByPage' ? 'active' : ''} href="/DGS/dgPageByPage" onClick={handleClose}>
+                  Page by Page
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgChapterIndexPB' ? 'active' : ''} href="/DGS/dgChapterIndexPB" onClick={handleClose}>
+                  Chapter Index Punjabi
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgChapterIndexEN' ? 'active' : ''} href="/DGS/dgChapterIndexEN" onClick={handleClose}>
+                  Chapter Index English
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/DGS/dgsSearch' ? 'active' : ''} href="/DGS/dgsSearch" onClick={handleClose}>
+                  Search Dasam Granth
+                </NavDropdown.Item>
+              </NavDropdown>
+            </li>
+            {/* Kabit Savaiye dropdown  */}
+            <li>
+              <NavDropdown title="Kabit Savaiye" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className={pathname === '/KS/kabitByKabit' ? 'active' : ''} href="/KS/kabitByKabit" onClick={handleClose}>
+                  Kabit by Kabit
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/KS/ksSearch' ? 'active' : ''} href="/KS/ksSearch" onClick={handleClose}>
+                  Search Kabit Savaiye
+                </NavDropdown.Item>
+              </NavDropdown>
+            </li>
+             {/* Bhai Nand Lal dropdown  */}
+            <li>
+              <NavDropdown title="Bhai Nand Lal" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/ghazal' ? 'active' : ''} href="/BNL/ghazal" onClick={handleClose}>
+                  Divan-e-Goya : Ghazals
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/quatrains' ? 'active' : ''} href="/BNL/quatrains" onClick={handleClose}>
+                  Rubaayee
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/zindginama' ? 'active' : ''} href="/BNL/zindginama" onClick={handleClose}>
+                  Zindginama
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/ganjnama' ? 'active' : ''} href="/BNL/ganjnama" onClick={handleClose}>
+                  Ganjnama
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/jot-bikas' ? 'active' : ''} href="/BNL/jot-bikas" onClick={handleClose}>
+                  Jot Bikas(Punjabi)
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/jot-bikas-persian' ? 'active' : ''} href="/BNL/jot-bikas-persian" onClick={handleClose}>
+                  Jot Bikas(Persian)
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/rahitnama' ? 'active' : ''} href="/BNL/rahitnama" onClick={handleClose}>
+                  Rahit Nama
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/tankahnama' ? 'active' : ''} href="/BNL/tankahnama" onClick={handleClose}>
+                  Tankah Nama
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/BNL/search' ? 'active' : ''} href="/BNL/search" onClick={handleClose}>
+                  Search Bhai Nand Lal
+                </NavDropdown.Item>
+              </NavDropdown>
+            </li>
+
+              <li>
+              <NavDropdown className="res-cushrefms" title="Sundar Gutka" id="navbarScrollingDropdown">
+                <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka' ? 'active' : ''} href="/sundar-gutka" onClick={handleClose}>
+                  Introduction
+                </NavDropdown.Item>
+
+                <NavDropdown title="Nitnem" className="second-level" id="navbarScrollingDropdown">
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/baanis/japji-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/japji-sahib" onClick={handleClose}>Japji Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/baanis/jaap-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/jaap-sahib" onClick={handleClose}>Jaap Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/baanis/tvai-prasadh-savaiye' ? 'active' : ''} href="/sundar-gutka/baanis/tvai-prasadh-savaiye" onClick={handleClose}>Tvai Prasadh Savaiye</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/baanis/chaupai-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/chaupai-sahib" onClick={handleClose}>Chaupai Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/baanis/anand-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/anand-sahib" onClick={handleClose}>Anand Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/baanis/rehraas-sahib' ? 'active' : ''} href="/sundar-gutka/baanis/rehraas-sahib" onClick={handleClose}>Rehraas Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/baanis/kirtan-sohila' ? 'active' : ''} href="/sundar-gutka/baanis/kirtan-sohila" onClick={handleClose}>Kirtan Sohila</NavDropdown.Item>
+                </NavDropdown>
+
+                <NavDropdown title="Guru Granth Sahib" className="second-level" id="navbarScrollingDropdown">
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/anand-sahib-bhog' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/anand-sahib-bhog" onClick={handleClose}>Anand Sahib(Bhog)</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/aarti' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/aarti" onClick={handleClose}>Arti</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/laavan-anand-karaj' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/laavan-anand-karaj" onClick={handleClose}>Laavan(Anand Karaj)</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/asa-ki-vaar' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/asa-ki-vaar" onClick={handleClose}>Asa Ki Vaar</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/sukhmani-sahib' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/sukhmani-sahib" onClick={handleClose}>Sukhmani Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/sidh-gosht' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/sidh-gosht" onClick={handleClose}>Sidh Gosht</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/ramkali-sadh' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/ramkali-sadh" onClick={handleClose}>Ramkali Sadh</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/dhakanee-oankaar' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/dhakanee-oankaar" onClick={handleClose}>Dhakanee Oankaar</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/baavan-akhree' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/baavan-akhree" onClick={handleClose}>Baavan Akhree</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/shabad-hazare' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/shabad-hazare" onClick={handleClose}>Shabad Hazare</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/baarah-maaha' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/baarah-maaha" onClick={handleClose}>Baarah Maaha</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/sukhmana-sahib' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/sukhmana-sahib" onClick={handleClose}>Sukhmana Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/dukh-bhanjani-sahib' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/dukh-bhanjani-sahib" onClick={handleClose}>Dukh Bhanjani Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/salok-sehskritee' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-sehskritee" onClick={handleClose}>Salok Sehskritee</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/gathaa' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/gathaa" onClick={handleClose}>Gathaa</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/phunhay-m5' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/phunhay-m5" onClick={handleClose}>Phunhay M:5</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/chaubolay-m5' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/chaubolay-m5" onClick={handleClose}>Chaubolay M:5</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/salok-kabeer-ji' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-kabeer-ji" onClick={handleClose}>Salok Kabeer Ji</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/salok-farid-ji' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-farid-ji" onClick={handleClose}>Salok Farid Ji</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m1' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m1" onClick={handleClose}>Savaiye M:1</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m2' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m2" onClick={handleClose}>Savaiye M:2</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m3' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m3" onClick={handleClose}>Savaiye M:3</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m4' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m4" onClick={handleClose}>Savaiye M:4</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/savaiye-m5' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/savaiye-m5" onClick={handleClose}>Savaiye M:5</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/GGS/baanis/salok-m9' ? 'active' : ''} href="/sundar-gutka/GGS/baanis/salok-m9" onClick={handleClose}>Salok M:9</NavDropdown.Item>
+                </NavDropdown>
+
+                <NavDropdown title="Dasam Granth" className="second-level" id="navbarScrollingDropdown">
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/DS/baanis/akal-ustati' ? 'active' : ''} href="/sundar-gutka/DS/baanis/akal-ustati" onClick={handleClose}>Akal Ustati</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/DS/baanis/bachitar-natak' ? 'active' : ''} href="/sundar-gutka/DS/baanis/bachitar-natak" onClick={handleClose}>Bachitar Natak</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/DS/baanis/shabad-hazare-paatishahi-10' ? 'active' : ''} href="/sundar-gutka/DS/baanis/shabad-hazare-paatishahi-10" onClick={handleClose}>Shabad Hazare Paatishahi 10</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/sundar-gutka/DS/baanis/tvai-prasaadh-savaiye-dheenan-kee' ? 'active' : ''} href="/sundar-gutka/DS/baanis/tvai-prasaadh-savaiye-dheenan-kee" onClick={handleClose}>Tvai Prasaadh Savai'ye (Dheenan Kee)</NavDropdown.Item>
+                </NavDropdown>
+              </NavDropdown>
+
+            </li>
+
+              <li>
+              <NavDropdown className="res-customs" title="Resources" id="navbarScrollingDropdown">
+                <NavDropdown title="Hukumnama" className="second-level" id="navbarScrollingDropdown">
+                  <NavDropdown.Item as={Link} className={pathname === '/Resources/Hukumnama/HukumIndex' ? 'active' : ''} href="/Resources/Hukumnama/HukumIndex" onClick={handleClose}>Hukumnama Index</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/Resources/Hukumnama' ? 'active' : ''} href="/Resources/Hukumnama" onClick={handleClose}>Sri Darbar Sahib</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} className={pathname === '/Resources/Hukumnama/CyberHukumnama' ? 'active' : ''} href="/Resources/Hukumnama/CyberHukumnama" onClick={handleClose}>Cyber Hukumnama</NavDropdown.Item>
+                </NavDropdown>
+
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/ISearchGurbani' ? 'active' : ''} href="/Resources/ISearchGurbani" onClick={handleClose}>iSearchGurbani</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/GSRM/Mahankosh' ? 'active' : ''} href="/Resources/GSRM/Mahankosh" onClick={handleClose}>GurShabad Ratanakar Mahankosh</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/SGGK/SGGKSearch' ? 'active' : ''} href="/Resources/SGGK/SGGKSearch" onClick={handleClose}>Sri Guru Granth Kosh</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/SGGSKhosh/Sggsk' ? 'active' : ''} href="/Resources/SGGSKhosh/Sggsk" onClick={handleClose}>SGGS Kosh</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/SNP/SNPrakash' ? 'active' : ''} href="/Resources/SNP/SNPrakash" onClick={handleClose}>Sri Nanak Prakash</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/SGPSG' ? 'active' : ''} href="/Resources/SGPSG" onClick={handleClose}>Sri Gur Pratap Suraj Granth</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/FWT' ? 'active' : ''} href="/Resources/FWT" onClick={handleClose} >Faridkot Wala Teeka</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/SGGD' ? 'active' : ''} href="/Resources/SGGD" onClick={handleClose}>Sri Guru Granth Darpan</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/Resources/Maansarovar' ? 'active' : ''} href="/Resources/Maansarovar" onClick={handleClose}>Maansarovar</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/gurus' ? 'active' : ''} href="/gurus" onClick={handleClose}>Guru Sahiban</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/bhagats' ? 'active' : ''} href="/bhagats" onClick={handleClose}>Bhagat Sahiban</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/bhatts' ? 'active' : ''} href="/bhatts" onClick={handleClose}>Bhatt Sahiban</NavDropdown.Item>
+                <NavDropdown.Item as={Link} className={pathname === '/raags' ? 'active' : ''} href="/raags" onClick={handleClose}>Gurbani Raags</NavDropdown.Item>
+
+              </NavDropdown>
+            </li>
+              <li><Nav.Link as={Link} href="/sitePreference" onClick={handleClose}>Site Preferences</Nav.Link></li>
+                <li> <Nav.Link as={Link} href="/feedback" onClick={handleClose}>Feedback</Nav.Link></li>
+                <li><Nav.Link as={Link} href="/siteMap" onClick={handleClose}>Sitemap</Nav.Link></li>
+                <li><Nav.Link as={Link} className={pathname === '/Resources/Hukumnama' ? 'active' : ''} href="/Resources/Hukumnama/" onClick={handleClose}>Today's Hukumnama</Nav.Link></li>
+
+                 
+
+
+               {/*  <li>
                   <NavDropdown title="Amrit Keertan" id="navbarScrollingDropdown">
                     <LinkContainer to="/amrit-keertan/introduction"><NavDropdown.Item onClick={handleClose}>Introduction</NavDropdown.Item></LinkContainer>
                     <LinkContainer to="/amrit-keertan/page-by-page"><NavDropdown.Item onClick={handleClose}>Page by Page</NavDropdown.Item></LinkContainer>
@@ -544,6 +758,7 @@ function Header(props) {
                     <LinkContainer to="/amrit-keertan/search"><NavDropdown.Item onClick={handleClose}>Search Amrit Keertan</NavDropdown.Item></LinkContainer>
                   </NavDropdown>
                 </li>
+
                 <li>
                   <NavDropdown title="Bhai Gurdas Vaaran" id="navbarScrollingDropdown">
                     <LinkContainer to="/bhai-gurdas-vaaran/introduction"><NavDropdown.Item onClick={handleClose}>Introduction</NavDropdown.Item></LinkContainer>
@@ -654,8 +869,8 @@ function Header(props) {
                 <li><LinkContainer to="/feedback"><Nav.Link onClick={handleClose}>Feedback</Nav.Link></LinkContainer></li>
                 <li><LinkContainer to="/site-map"><Nav.Link onClick={handleClose}>Sitemap</Nav.Link></LinkContainer></li>
                 <li><LinkContainer to="/hukum"><Nav.Link onClick={handleClose}>Today's Hukumnama</Nav.Link></LinkContainer></li>
-
-              </ul> */}
+ */}
+              </ul>
             </Offcanvas.Body>
           </Offcanvas>
         </Container>
@@ -1003,20 +1218,6 @@ function Header(props) {
                   <NavDropdown.Item as={Link} className={pathname === '/Resources/Hukumnama' ? 'active' : ''} href="/Resources/Hukumnama">Sri Darbar Sahib</NavDropdown.Item>
                   <NavDropdown.Item as={Link} className={pathname === '/Resources/Hukumnama/CyberHukumnama' ? 'active' : ''} href="/Resources/Hukumnama/CyberHukumnama">Cyber Hukumnama</NavDropdown.Item>
                 </NavDropdown>
-
-                {/* <NavDropdown.Item as={Link} href="/sgdv/isg">iSearchGurbani</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/mahan-kosh">GurShabad Ratanakar Mahankosh</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/guru-granth-kosh">Sri Guru Granth Kosh</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/sggs-kosh">SGGS Kosh</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/sri-nanak-prakash">Sri Nanak Prakash</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/sri-gur-pratap-suraj-granth">Sri Gur Pratap Suraj Granth</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/faridkot-wala-teeka">Faridkot Wala Teeka</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/sri-guru-granth-darpan">Sri Guru Granth Darpan</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/maansarovar">Maansarovar</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/gurus">Guru Sahiban</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/bhagats">Bhagat Sahiban</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/bhatts">Bhatt Sahiban</NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/raags">Gurbani Raags</NavDropdown.Item> */}
 
                 <NavDropdown.Item as={Link} className={pathname === '/Resources/ISearchGurbani' ? 'active' : ''} href="/Resources/ISearchGurbani">iSearchGurbani</NavDropdown.Item>
                 <NavDropdown.Item as={Link} className={pathname === '/Resources/GSRM/Mahankosh' ? 'active' : ''} href="/Resources/GSRM/Mahankosh">GurShabad Ratanakar Mahankosh</NavDropdown.Item>
